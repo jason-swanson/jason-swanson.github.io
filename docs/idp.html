@@ -365,7 +365,7 @@ though, can handle agents whose range of possible actions is arbitrary.</p>
 </div>
 
 <div class="pdoc-code codehilite">
-<pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">idpModel</span><span class="o">.</span><span class="n">addWeightedSims</span><span class="p">(</span><span class="mi">100000</span><span class="p">)</span>
+<pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">idpModel</span><span class="o">.</span><span class="n">addWeightedSims</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
   <span class="n">File</span> <span class="s2">&quot;idp.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">395</span><span class="p">,</span> <span class="ow">in</span> <span class="n">addWeightedSims</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">_weightedSims</span> <span class="o">+=</span> <span class="p">[</span><span class="n">WeightedSim</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num</span><span class="p">)]</span>
@@ -680,7 +680,7 @@ though, can handle agents whose range of possible actions is arbitrary.</p>
 </span><span id="L-188"><a href="#L-188"><span class="linenos">188</span></a><span class="sd">```</span>
 </span><span id="L-189"><a href="#L-189"><span class="linenos">189</span></a>
 </span><span id="L-190"><a href="#L-190"><span class="linenos">190</span></a><span class="sd">```python</span>
-</span><span id="L-191"><a href="#L-191"><span class="linenos">191</span></a><span class="sd">&gt;&gt;&gt; idpModel.addWeightedSims(100000)</span>
+</span><span id="L-191"><a href="#L-191"><span class="linenos">191</span></a><span class="sd">&gt;&gt;&gt; idpModel.addWeightedSims(1)</span>
 </span><span id="L-192"><a href="#L-192"><span class="linenos">192</span></a><span class="sd">Traceback (most recent call last):</span>
 </span><span id="L-193"><a href="#L-193"><span class="linenos">193</span></a><span class="sd">  File &quot;idp.py&quot;, line 395, in addWeightedSims</span>
 </span><span id="L-194"><a href="#L-194"><span class="linenos">194</span></a><span class="sd">    self._weightedSims += [WeightedSim(self) for _ in range(num)]</span>
