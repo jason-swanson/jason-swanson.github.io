@@ -394,89 +394,87 @@
 </span><span id="L-248"><a href="#L-248"><span class="linenos">248</span></a>
 </span><span id="L-249"><a href="#L-249"><span class="linenos">249</span></a>    <span class="nd">@property</span>
 </span><span id="L-250"><a href="#L-250"><span class="linenos">250</span></a>    <span class="k">def</span> <span class="nf">diff</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-</span><span id="L-251"><a href="#L-251"><span class="linenos">251</span></a>        <span class="sd">&#39;&#39;&#39;`int`: The player&#39;s average earned score minus their</span>
-</span><span id="L-252"><a href="#L-252"><span class="linenos">252</span></a><span class="sd">        theoretical long-term average score.</span>
-</span><span id="L-253"><a href="#L-253"><span class="linenos">253</span></a><span class="sd">        &#39;&#39;&#39;</span>
-</span><span id="L-254"><a href="#L-254"><span class="linenos">254</span></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">avgScore</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">trueAvg</span>
-</span><span id="L-255"><a href="#L-255"><span class="linenos">255</span></a>
-</span><span id="L-256"><a href="#L-256"><span class="linenos">256</span></a><span class="k">class</span> <span class="nc">Leaderboard</span><span class="p">:</span>
-</span><span id="L-257"><a href="#L-257"><span class="linenos">257</span></a>    <span class="sd">&#39;&#39;&#39;A leaderboard in the hypothetical game.</span>
+</span><span id="L-251"><a href="#L-251"><span class="linenos">251</span></a>        <span class="sd">&#39;&#39;&#39;`int`: Returns `avgScore` minus `trueAvg`.&#39;&#39;&#39;</span>
+</span><span id="L-252"><a href="#L-252"><span class="linenos">252</span></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">avgScore</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">trueAvg</span>
+</span><span id="L-253"><a href="#L-253"><span class="linenos">253</span></a>
+</span><span id="L-254"><a href="#L-254"><span class="linenos">254</span></a><span class="k">class</span> <span class="nc">Leaderboard</span><span class="p">:</span>
+</span><span id="L-255"><a href="#L-255"><span class="linenos">255</span></a>    <span class="sd">&#39;&#39;&#39;A leaderboard in the hypothetical game.</span>
+</span><span id="L-256"><a href="#L-256"><span class="linenos">256</span></a>
+</span><span id="L-257"><a href="#L-257"><span class="linenos">257</span></a><span class="sd">    &#39;&#39;&#39;</span>
 </span><span id="L-258"><a href="#L-258"><span class="linenos">258</span></a>
-</span><span id="L-259"><a href="#L-259"><span class="linenos">259</span></a><span class="sd">    &#39;&#39;&#39;</span>
-</span><span id="L-260"><a href="#L-260"><span class="linenos">260</span></a>
-</span><span id="L-261"><a href="#L-261"><span class="linenos">261</span></a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">players</span><span class="p">):</span>
-</span><span id="L-262"><a href="#L-262"><span class="linenos">262</span></a>        <span class="sd">&#39;&#39;&#39;Creates a `Leaderboard` instance from the given list of</span>
-</span><span id="L-263"><a href="#L-263"><span class="linenos">263</span></a><span class="sd">        players.</span>
-</span><span id="L-264"><a href="#L-264"><span class="linenos">264</span></a>
-</span><span id="L-265"><a href="#L-265"><span class="linenos">265</span></a><span class="sd">        &#39;&#39;&#39;</span>
-</span><span id="L-266"><a href="#L-266"><span class="linenos">266</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">players</span> <span class="o">=</span> <span class="n">players</span>
-</span><span id="L-267"><a href="#L-267"><span class="linenos">267</span></a>        <span class="sd">&#39;&#39;&#39;`list`[`Player`]: The list of `Player` objects that are on</span>
-</span><span id="L-268"><a href="#L-268"><span class="linenos">268</span></a><span class="sd">        the leaderboard.</span>
-</span><span id="L-269"><a href="#L-269"><span class="linenos">269</span></a><span class="sd">        &#39;&#39;&#39;</span>
-</span><span id="L-270"><a href="#L-270"><span class="linenos">270</span></a>
-</span><span id="L-271"><a href="#L-271"><span class="linenos">271</span></a>    <span class="k">def</span> <span class="nf">playCountRank</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">player</span><span class="p">):</span>
-</span><span id="L-272"><a href="#L-272"><span class="linenos">272</span></a>        <span class="sd">&#39;&#39;&#39;Returns the ranking of the given player, according to how</span>
-</span><span id="L-273"><a href="#L-273"><span class="linenos">273</span></a><span class="sd">        many games they played. The player with the most games has rank</span>
-</span><span id="L-274"><a href="#L-274"><span class="linenos">274</span></a><span class="sd">        0, and the ranks increase from there. Every player has a unique</span>
-</span><span id="L-275"><a href="#L-275"><span class="linenos">275</span></a><span class="sd">        rank, with ties going to the player that was added earlier to</span>
-</span><span id="L-276"><a href="#L-276"><span class="linenos">276</span></a><span class="sd">        the leaderboard.</span>
-</span><span id="L-277"><a href="#L-277"><span class="linenos">277</span></a>
-</span><span id="L-278"><a href="#L-278"><span class="linenos">278</span></a><span class="sd">        The play count ranking are intended to be used as indices in an</span>
-</span><span id="L-279"><a href="#L-279"><span class="linenos">279</span></a><span class="sd">        ordered list of players.</span>
+</span><span id="L-259"><a href="#L-259"><span class="linenos">259</span></a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">players</span><span class="p">):</span>
+</span><span id="L-260"><a href="#L-260"><span class="linenos">260</span></a>        <span class="sd">&#39;&#39;&#39;Creates a `Leaderboard` instance from the given list of</span>
+</span><span id="L-261"><a href="#L-261"><span class="linenos">261</span></a><span class="sd">        players.</span>
+</span><span id="L-262"><a href="#L-262"><span class="linenos">262</span></a>
+</span><span id="L-263"><a href="#L-263"><span class="linenos">263</span></a><span class="sd">        &#39;&#39;&#39;</span>
+</span><span id="L-264"><a href="#L-264"><span class="linenos">264</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">players</span> <span class="o">=</span> <span class="n">players</span>
+</span><span id="L-265"><a href="#L-265"><span class="linenos">265</span></a>        <span class="sd">&#39;&#39;&#39;`list`[`Player`]: The list of `Player` objects that are on</span>
+</span><span id="L-266"><a href="#L-266"><span class="linenos">266</span></a><span class="sd">        the leaderboard.</span>
+</span><span id="L-267"><a href="#L-267"><span class="linenos">267</span></a><span class="sd">        &#39;&#39;&#39;</span>
+</span><span id="L-268"><a href="#L-268"><span class="linenos">268</span></a>
+</span><span id="L-269"><a href="#L-269"><span class="linenos">269</span></a>    <span class="k">def</span> <span class="nf">playCountRank</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">player</span><span class="p">):</span>
+</span><span id="L-270"><a href="#L-270"><span class="linenos">270</span></a>        <span class="sd">&#39;&#39;&#39;Returns the ranking of the given player, according to how</span>
+</span><span id="L-271"><a href="#L-271"><span class="linenos">271</span></a><span class="sd">        many games they played. The player with the most games has rank</span>
+</span><span id="L-272"><a href="#L-272"><span class="linenos">272</span></a><span class="sd">        0, and the ranks increase from there. Every player has a unique</span>
+</span><span id="L-273"><a href="#L-273"><span class="linenos">273</span></a><span class="sd">        rank, with ties going to the player that appears first in</span>
+</span><span id="L-274"><a href="#L-274"><span class="linenos">274</span></a><span class="sd">        `players`.</span>
+</span><span id="L-275"><a href="#L-275"><span class="linenos">275</span></a>
+</span><span id="L-276"><a href="#L-276"><span class="linenos">276</span></a><span class="sd">        The play count rankings are intended to be used as indices in an</span>
+</span><span id="L-277"><a href="#L-277"><span class="linenos">277</span></a><span class="sd">        ordered list of players.</span>
+</span><span id="L-278"><a href="#L-278"><span class="linenos">278</span></a>
+</span><span id="L-279"><a href="#L-279"><span class="linenos">279</span></a><span class="sd">        **Arguments:**</span>
 </span><span id="L-280"><a href="#L-280"><span class="linenos">280</span></a>
-</span><span id="L-281"><a href="#L-281"><span class="linenos">281</span></a><span class="sd">        **Arguments:**</span>
+</span><span id="L-281"><a href="#L-281"><span class="linenos">281</span></a><span class="sd">        * **player** (`Player`): The player whose rank to return.</span>
 </span><span id="L-282"><a href="#L-282"><span class="linenos">282</span></a>
-</span><span id="L-283"><a href="#L-283"><span class="linenos">283</span></a><span class="sd">        * **player** (`Player`): The player whose rank to return.</span>
+</span><span id="L-283"><a href="#L-283"><span class="linenos">283</span></a><span class="sd">        **Returns:**</span>
 </span><span id="L-284"><a href="#L-284"><span class="linenos">284</span></a>
-</span><span id="L-285"><a href="#L-285"><span class="linenos">285</span></a><span class="sd">        **Returns:**</span>
+</span><span id="L-285"><a href="#L-285"><span class="linenos">285</span></a><span class="sd">        * `int`: The rank of the player.</span>
 </span><span id="L-286"><a href="#L-286"><span class="linenos">286</span></a>
-</span><span id="L-287"><a href="#L-287"><span class="linenos">287</span></a><span class="sd">        * `int`: The rank of the player.</span>
-</span><span id="L-288"><a href="#L-288"><span class="linenos">288</span></a>
-</span><span id="L-289"><a href="#L-289"><span class="linenos">289</span></a><span class="sd">        &#39;&#39;&#39;</span>
-</span><span id="L-290"><a href="#L-290"><span class="linenos">290</span></a>        <span class="n">playCounts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">player</span><span class="o">.</span><span class="n">playCount</span> <span class="k">for</span> <span class="n">player</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">players</span><span class="p">])</span>
-</span><span id="L-291"><a href="#L-291"><span class="linenos">291</span></a>        <span class="n">countRanks</span> <span class="o">=</span> <span class="n">rankdata</span><span class="p">(</span><span class="o">-</span><span class="n">playCounts</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;ordinal&#39;</span><span class="p">)</span>
-</span><span id="L-292"><a href="#L-292"><span class="linenos">292</span></a>        <span class="k">return</span> <span class="n">countRanks</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">players</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">player</span><span class="p">)]</span> <span class="o">-</span> <span class="mi">1</span>
-</span><span id="L-293"><a href="#L-293"><span class="linenos">293</span></a>
-</span><span id="L-294"><a href="#L-294"><span class="linenos">294</span></a>    <span class="k">def</span> <span class="nf">highScoreRank</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">player</span><span class="p">):</span>
-</span><span id="L-295"><a href="#L-295"><span class="linenos">295</span></a>        <span class="sd">&#39;&#39;&#39;Returns the ranking of the given player, according to their</span>
-</span><span id="L-296"><a href="#L-296"><span class="linenos">296</span></a><span class="sd">        high score. The player with the best high score has rank 1, and</span>
-</span><span id="L-297"><a href="#L-297"><span class="linenos">297</span></a><span class="sd">        the ranks increase from there. Competition ranking is used to</span>
-</span><span id="L-298"><a href="#L-298"><span class="linenos">298</span></a><span class="sd">        handle ties.</span>
+</span><span id="L-287"><a href="#L-287"><span class="linenos">287</span></a><span class="sd">        &#39;&#39;&#39;</span>
+</span><span id="L-288"><a href="#L-288"><span class="linenos">288</span></a>        <span class="n">playCounts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">player</span><span class="o">.</span><span class="n">playCount</span> <span class="k">for</span> <span class="n">player</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">players</span><span class="p">])</span>
+</span><span id="L-289"><a href="#L-289"><span class="linenos">289</span></a>        <span class="n">countRanks</span> <span class="o">=</span> <span class="n">rankdata</span><span class="p">(</span><span class="o">-</span><span class="n">playCounts</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;ordinal&#39;</span><span class="p">)</span>
+</span><span id="L-290"><a href="#L-290"><span class="linenos">290</span></a>        <span class="k">return</span> <span class="n">countRanks</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">players</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">player</span><span class="p">)]</span> <span class="o">-</span> <span class="mi">1</span>
+</span><span id="L-291"><a href="#L-291"><span class="linenos">291</span></a>
+</span><span id="L-292"><a href="#L-292"><span class="linenos">292</span></a>    <span class="k">def</span> <span class="nf">highScoreRank</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">player</span><span class="p">):</span>
+</span><span id="L-293"><a href="#L-293"><span class="linenos">293</span></a>        <span class="sd">&#39;&#39;&#39;Returns the ranking of the given player, according to their</span>
+</span><span id="L-294"><a href="#L-294"><span class="linenos">294</span></a><span class="sd">        high score. The player with the best high score has rank 1, and</span>
+</span><span id="L-295"><a href="#L-295"><span class="linenos">295</span></a><span class="sd">        the ranks increase from there. Competition ranking is used to</span>
+</span><span id="L-296"><a href="#L-296"><span class="linenos">296</span></a><span class="sd">        handle ties.</span>
+</span><span id="L-297"><a href="#L-297"><span class="linenos">297</span></a>
+</span><span id="L-298"><a href="#L-298"><span class="linenos">298</span></a><span class="sd">        **Arguments:**</span>
 </span><span id="L-299"><a href="#L-299"><span class="linenos">299</span></a>
-</span><span id="L-300"><a href="#L-300"><span class="linenos">300</span></a><span class="sd">        **Arguments:**</span>
+</span><span id="L-300"><a href="#L-300"><span class="linenos">300</span></a><span class="sd">        * **player** (`Player`): The player whose rank to return.</span>
 </span><span id="L-301"><a href="#L-301"><span class="linenos">301</span></a>
-</span><span id="L-302"><a href="#L-302"><span class="linenos">302</span></a><span class="sd">        * **player** (`Player`): The player whose rank to return.</span>
+</span><span id="L-302"><a href="#L-302"><span class="linenos">302</span></a><span class="sd">        **Returns:**</span>
 </span><span id="L-303"><a href="#L-303"><span class="linenos">303</span></a>
-</span><span id="L-304"><a href="#L-304"><span class="linenos">304</span></a><span class="sd">        **Returns:**</span>
+</span><span id="L-304"><a href="#L-304"><span class="linenos">304</span></a><span class="sd">        * `int`: The rank of the player.</span>
 </span><span id="L-305"><a href="#L-305"><span class="linenos">305</span></a>
-</span><span id="L-306"><a href="#L-306"><span class="linenos">306</span></a><span class="sd">        * `int`: The rank of the player.</span>
-</span><span id="L-307"><a href="#L-307"><span class="linenos">307</span></a>
-</span><span id="L-308"><a href="#L-308"><span class="linenos">308</span></a><span class="sd">        &#39;&#39;&#39;</span>
-</span><span id="L-309"><a href="#L-309"><span class="linenos">309</span></a>        <span class="n">highScores</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">player</span><span class="o">.</span><span class="n">highScore</span> <span class="k">for</span> <span class="n">player</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">players</span><span class="p">])</span>
-</span><span id="L-310"><a href="#L-310"><span class="linenos">310</span></a>        <span class="n">highScoreRanks</span> <span class="o">=</span> <span class="n">rankdata</span><span class="p">(</span><span class="o">-</span><span class="n">highScores</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;min&#39;</span><span class="p">)</span>
-</span><span id="L-311"><a href="#L-311"><span class="linenos">311</span></a>        <span class="k">return</span> <span class="n">highScoreRanks</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">players</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">player</span><span class="p">)]</span>
-</span><span id="L-312"><a href="#L-312"><span class="linenos">312</span></a>
-</span><span id="L-313"><a href="#L-313"><span class="linenos">313</span></a>    <span class="k">def</span> <span class="nf">avgScoreRank</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">player</span><span class="p">):</span>
-</span><span id="L-314"><a href="#L-314"><span class="linenos">314</span></a>        <span class="sd">&#39;&#39;&#39;Returns the ranking of the given player, according to their</span>
-</span><span id="L-315"><a href="#L-315"><span class="linenos">315</span></a><span class="sd">        average score. The player with the best average score has rank</span>
-</span><span id="L-316"><a href="#L-316"><span class="linenos">316</span></a><span class="sd">        1, and the ranks increase from there. Average scores are rounded</span>
-</span><span id="L-317"><a href="#L-317"><span class="linenos">317</span></a><span class="sd">        to the nearest integer before ranks are computed. Competition</span>
-</span><span id="L-318"><a href="#L-318"><span class="linenos">318</span></a><span class="sd">        ranking is used to handle ties.</span>
+</span><span id="L-306"><a href="#L-306"><span class="linenos">306</span></a><span class="sd">        &#39;&#39;&#39;</span>
+</span><span id="L-307"><a href="#L-307"><span class="linenos">307</span></a>        <span class="n">highScores</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">player</span><span class="o">.</span><span class="n">highScore</span> <span class="k">for</span> <span class="n">player</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">players</span><span class="p">])</span>
+</span><span id="L-308"><a href="#L-308"><span class="linenos">308</span></a>        <span class="n">highScoreRanks</span> <span class="o">=</span> <span class="n">rankdata</span><span class="p">(</span><span class="o">-</span><span class="n">highScores</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;min&#39;</span><span class="p">)</span>
+</span><span id="L-309"><a href="#L-309"><span class="linenos">309</span></a>        <span class="k">return</span> <span class="n">highScoreRanks</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">players</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">player</span><span class="p">)]</span>
+</span><span id="L-310"><a href="#L-310"><span class="linenos">310</span></a>
+</span><span id="L-311"><a href="#L-311"><span class="linenos">311</span></a>    <span class="k">def</span> <span class="nf">avgScoreRank</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">player</span><span class="p">):</span>
+</span><span id="L-312"><a href="#L-312"><span class="linenos">312</span></a>        <span class="sd">&#39;&#39;&#39;Returns the ranking of the given player, according to their</span>
+</span><span id="L-313"><a href="#L-313"><span class="linenos">313</span></a><span class="sd">        average score. The player with the best average score has rank</span>
+</span><span id="L-314"><a href="#L-314"><span class="linenos">314</span></a><span class="sd">        1, and the ranks increase from there. Average scores are rounded</span>
+</span><span id="L-315"><a href="#L-315"><span class="linenos">315</span></a><span class="sd">        to the nearest integer before ranks are computed. Competition</span>
+</span><span id="L-316"><a href="#L-316"><span class="linenos">316</span></a><span class="sd">        ranking is used to handle ties.</span>
+</span><span id="L-317"><a href="#L-317"><span class="linenos">317</span></a>
+</span><span id="L-318"><a href="#L-318"><span class="linenos">318</span></a><span class="sd">        **Arguments:**</span>
 </span><span id="L-319"><a href="#L-319"><span class="linenos">319</span></a>
-</span><span id="L-320"><a href="#L-320"><span class="linenos">320</span></a><span class="sd">        **Arguments:**</span>
+</span><span id="L-320"><a href="#L-320"><span class="linenos">320</span></a><span class="sd">        * **player** (`Player`): The player whose rank to return.</span>
 </span><span id="L-321"><a href="#L-321"><span class="linenos">321</span></a>
-</span><span id="L-322"><a href="#L-322"><span class="linenos">322</span></a><span class="sd">        * **player** (`Player`): The player whose rank to return.</span>
+</span><span id="L-322"><a href="#L-322"><span class="linenos">322</span></a><span class="sd">        **Returns:**</span>
 </span><span id="L-323"><a href="#L-323"><span class="linenos">323</span></a>
-</span><span id="L-324"><a href="#L-324"><span class="linenos">324</span></a><span class="sd">        **Returns:**</span>
+</span><span id="L-324"><a href="#L-324"><span class="linenos">324</span></a><span class="sd">        * `int`: The rank of the player.</span>
 </span><span id="L-325"><a href="#L-325"><span class="linenos">325</span></a>
-</span><span id="L-326"><a href="#L-326"><span class="linenos">326</span></a><span class="sd">        * `int`: The rank of the player.</span>
-</span><span id="L-327"><a href="#L-327"><span class="linenos">327</span></a>
-</span><span id="L-328"><a href="#L-328"><span class="linenos">328</span></a><span class="sd">        &#39;&#39;&#39;</span>
-</span><span id="L-329"><a href="#L-329"><span class="linenos">329</span></a>        <span class="n">avgScores</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span>
-</span><span id="L-330"><a href="#L-330"><span class="linenos">330</span></a>            <span class="p">[</span><span class="nb">round</span><span class="p">(</span><span class="n">player</span><span class="o">.</span><span class="n">avgScore</span><span class="p">)</span> <span class="k">for</span> <span class="n">player</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">players</span><span class="p">]</span>
-</span><span id="L-331"><a href="#L-331"><span class="linenos">331</span></a>        <span class="p">)</span>
-</span><span id="L-332"><a href="#L-332"><span class="linenos">332</span></a>        <span class="n">avgScoreRanks</span> <span class="o">=</span> <span class="n">rankdata</span><span class="p">(</span><span class="o">-</span><span class="n">avgScores</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;min&#39;</span><span class="p">)</span>
-</span><span id="L-333"><a href="#L-333"><span class="linenos">333</span></a>        <span class="k">return</span> <span class="n">avgScoreRanks</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">players</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">player</span><span class="p">)]</span>
+</span><span id="L-326"><a href="#L-326"><span class="linenos">326</span></a><span class="sd">        &#39;&#39;&#39;</span>
+</span><span id="L-327"><a href="#L-327"><span class="linenos">327</span></a>        <span class="n">avgScores</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span>
+</span><span id="L-328"><a href="#L-328"><span class="linenos">328</span></a>            <span class="p">[</span><span class="nb">round</span><span class="p">(</span><span class="n">player</span><span class="o">.</span><span class="n">avgScore</span><span class="p">)</span> <span class="k">for</span> <span class="n">player</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">players</span><span class="p">]</span>
+</span><span id="L-329"><a href="#L-329"><span class="linenos">329</span></a>        <span class="p">)</span>
+</span><span id="L-330"><a href="#L-330"><span class="linenos">330</span></a>        <span class="n">avgScoreRanks</span> <span class="o">=</span> <span class="n">rankdata</span><span class="p">(</span><span class="o">-</span><span class="n">avgScores</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;min&#39;</span><span class="p">)</span>
+</span><span id="L-331"><a href="#L-331"><span class="linenos">331</span></a>        <span class="k">return</span> <span class="n">avgScoreRanks</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">players</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">player</span><span class="p">)]</span>
 </span></pre></div>
 
 
@@ -847,10 +845,8 @@ working directory.</li>
 </span><span id="Player-249"><a href="#Player-249"><span class="linenos">249</span></a>
 </span><span id="Player-250"><a href="#Player-250"><span class="linenos">250</span></a>    <span class="nd">@property</span>
 </span><span id="Player-251"><a href="#Player-251"><span class="linenos">251</span></a>    <span class="k">def</span> <span class="nf">diff</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-</span><span id="Player-252"><a href="#Player-252"><span class="linenos">252</span></a>        <span class="sd">&#39;&#39;&#39;`int`: The player&#39;s average earned score minus their</span>
-</span><span id="Player-253"><a href="#Player-253"><span class="linenos">253</span></a><span class="sd">        theoretical long-term average score.</span>
-</span><span id="Player-254"><a href="#Player-254"><span class="linenos">254</span></a><span class="sd">        &#39;&#39;&#39;</span>
-</span><span id="Player-255"><a href="#Player-255"><span class="linenos">255</span></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">avgScore</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">trueAvg</span>
+</span><span id="Player-252"><a href="#Player-252"><span class="linenos">252</span></a>        <span class="sd">&#39;&#39;&#39;`int`: Returns `avgScore` minus `trueAvg`.&#39;&#39;&#39;</span>
+</span><span id="Player-253"><a href="#Player-253"><span class="linenos">253</span></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">avgScore</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">trueAvg</span>
 </span></pre></div>
 
 
@@ -1049,15 +1045,12 @@ player. Determined by the <code><a href="#makeAvg">makeAvg</a></code> function.<
     <a class="headerlink" href="#Player.diff"></a>
             <div class="pdoc-code codehilite"><pre><span></span><span id="Player.diff-250"><a href="#Player.diff-250"><span class="linenos">250</span></a>    <span class="nd">@property</span>
 </span><span id="Player.diff-251"><a href="#Player.diff-251"><span class="linenos">251</span></a>    <span class="k">def</span> <span class="nf">diff</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-</span><span id="Player.diff-252"><a href="#Player.diff-252"><span class="linenos">252</span></a>        <span class="sd">&#39;&#39;&#39;`int`: The player&#39;s average earned score minus their</span>
-</span><span id="Player.diff-253"><a href="#Player.diff-253"><span class="linenos">253</span></a><span class="sd">        theoretical long-term average score.</span>
-</span><span id="Player.diff-254"><a href="#Player.diff-254"><span class="linenos">254</span></a><span class="sd">        &#39;&#39;&#39;</span>
-</span><span id="Player.diff-255"><a href="#Player.diff-255"><span class="linenos">255</span></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">avgScore</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">trueAvg</span>
+</span><span id="Player.diff-252"><a href="#Player.diff-252"><span class="linenos">252</span></a>        <span class="sd">&#39;&#39;&#39;`int`: Returns `avgScore` minus `trueAvg`.&#39;&#39;&#39;</span>
+</span><span id="Player.diff-253"><a href="#Player.diff-253"><span class="linenos">253</span></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">avgScore</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">trueAvg</span>
 </span></pre></div>
 
 
-            <div class="docstring"><p><code>int</code>: The player's average earned score minus their
-theoretical long-term average score.</p>
+            <div class="docstring"><p><code>int</code>: Returns <code><a href="#Player.avgScore">avgScore</a></code> minus <code><a href="#Player.trueAvg">trueAvg</a></code>.</p>
 </div>
 
 
@@ -1074,84 +1067,84 @@ theoretical long-term average score.</p>
 
     </div>
     <a class="headerlink" href="#Leaderboard"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="Leaderboard-257"><a href="#Leaderboard-257"><span class="linenos">257</span></a><span class="k">class</span> <span class="nc">Leaderboard</span><span class="p">:</span>
-</span><span id="Leaderboard-258"><a href="#Leaderboard-258"><span class="linenos">258</span></a>    <span class="sd">&#39;&#39;&#39;A leaderboard in the hypothetical game.</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="Leaderboard-255"><a href="#Leaderboard-255"><span class="linenos">255</span></a><span class="k">class</span> <span class="nc">Leaderboard</span><span class="p">:</span>
+</span><span id="Leaderboard-256"><a href="#Leaderboard-256"><span class="linenos">256</span></a>    <span class="sd">&#39;&#39;&#39;A leaderboard in the hypothetical game.</span>
+</span><span id="Leaderboard-257"><a href="#Leaderboard-257"><span class="linenos">257</span></a>
+</span><span id="Leaderboard-258"><a href="#Leaderboard-258"><span class="linenos">258</span></a><span class="sd">    &#39;&#39;&#39;</span>
 </span><span id="Leaderboard-259"><a href="#Leaderboard-259"><span class="linenos">259</span></a>
-</span><span id="Leaderboard-260"><a href="#Leaderboard-260"><span class="linenos">260</span></a><span class="sd">    &#39;&#39;&#39;</span>
-</span><span id="Leaderboard-261"><a href="#Leaderboard-261"><span class="linenos">261</span></a>
-</span><span id="Leaderboard-262"><a href="#Leaderboard-262"><span class="linenos">262</span></a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">players</span><span class="p">):</span>
-</span><span id="Leaderboard-263"><a href="#Leaderboard-263"><span class="linenos">263</span></a>        <span class="sd">&#39;&#39;&#39;Creates a `Leaderboard` instance from the given list of</span>
-</span><span id="Leaderboard-264"><a href="#Leaderboard-264"><span class="linenos">264</span></a><span class="sd">        players.</span>
-</span><span id="Leaderboard-265"><a href="#Leaderboard-265"><span class="linenos">265</span></a>
-</span><span id="Leaderboard-266"><a href="#Leaderboard-266"><span class="linenos">266</span></a><span class="sd">        &#39;&#39;&#39;</span>
-</span><span id="Leaderboard-267"><a href="#Leaderboard-267"><span class="linenos">267</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">players</span> <span class="o">=</span> <span class="n">players</span>
-</span><span id="Leaderboard-268"><a href="#Leaderboard-268"><span class="linenos">268</span></a>        <span class="sd">&#39;&#39;&#39;`list`[`Player`]: The list of `Player` objects that are on</span>
-</span><span id="Leaderboard-269"><a href="#Leaderboard-269"><span class="linenos">269</span></a><span class="sd">        the leaderboard.</span>
-</span><span id="Leaderboard-270"><a href="#Leaderboard-270"><span class="linenos">270</span></a><span class="sd">        &#39;&#39;&#39;</span>
-</span><span id="Leaderboard-271"><a href="#Leaderboard-271"><span class="linenos">271</span></a>
-</span><span id="Leaderboard-272"><a href="#Leaderboard-272"><span class="linenos">272</span></a>    <span class="k">def</span> <span class="nf">playCountRank</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">player</span><span class="p">):</span>
-</span><span id="Leaderboard-273"><a href="#Leaderboard-273"><span class="linenos">273</span></a>        <span class="sd">&#39;&#39;&#39;Returns the ranking of the given player, according to how</span>
-</span><span id="Leaderboard-274"><a href="#Leaderboard-274"><span class="linenos">274</span></a><span class="sd">        many games they played. The player with the most games has rank</span>
-</span><span id="Leaderboard-275"><a href="#Leaderboard-275"><span class="linenos">275</span></a><span class="sd">        0, and the ranks increase from there. Every player has a unique</span>
-</span><span id="Leaderboard-276"><a href="#Leaderboard-276"><span class="linenos">276</span></a><span class="sd">        rank, with ties going to the player that was added earlier to</span>
-</span><span id="Leaderboard-277"><a href="#Leaderboard-277"><span class="linenos">277</span></a><span class="sd">        the leaderboard.</span>
-</span><span id="Leaderboard-278"><a href="#Leaderboard-278"><span class="linenos">278</span></a>
-</span><span id="Leaderboard-279"><a href="#Leaderboard-279"><span class="linenos">279</span></a><span class="sd">        The play count ranking are intended to be used as indices in an</span>
-</span><span id="Leaderboard-280"><a href="#Leaderboard-280"><span class="linenos">280</span></a><span class="sd">        ordered list of players.</span>
+</span><span id="Leaderboard-260"><a href="#Leaderboard-260"><span class="linenos">260</span></a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">players</span><span class="p">):</span>
+</span><span id="Leaderboard-261"><a href="#Leaderboard-261"><span class="linenos">261</span></a>        <span class="sd">&#39;&#39;&#39;Creates a `Leaderboard` instance from the given list of</span>
+</span><span id="Leaderboard-262"><a href="#Leaderboard-262"><span class="linenos">262</span></a><span class="sd">        players.</span>
+</span><span id="Leaderboard-263"><a href="#Leaderboard-263"><span class="linenos">263</span></a>
+</span><span id="Leaderboard-264"><a href="#Leaderboard-264"><span class="linenos">264</span></a><span class="sd">        &#39;&#39;&#39;</span>
+</span><span id="Leaderboard-265"><a href="#Leaderboard-265"><span class="linenos">265</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">players</span> <span class="o">=</span> <span class="n">players</span>
+</span><span id="Leaderboard-266"><a href="#Leaderboard-266"><span class="linenos">266</span></a>        <span class="sd">&#39;&#39;&#39;`list`[`Player`]: The list of `Player` objects that are on</span>
+</span><span id="Leaderboard-267"><a href="#Leaderboard-267"><span class="linenos">267</span></a><span class="sd">        the leaderboard.</span>
+</span><span id="Leaderboard-268"><a href="#Leaderboard-268"><span class="linenos">268</span></a><span class="sd">        &#39;&#39;&#39;</span>
+</span><span id="Leaderboard-269"><a href="#Leaderboard-269"><span class="linenos">269</span></a>
+</span><span id="Leaderboard-270"><a href="#Leaderboard-270"><span class="linenos">270</span></a>    <span class="k">def</span> <span class="nf">playCountRank</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">player</span><span class="p">):</span>
+</span><span id="Leaderboard-271"><a href="#Leaderboard-271"><span class="linenos">271</span></a>        <span class="sd">&#39;&#39;&#39;Returns the ranking of the given player, according to how</span>
+</span><span id="Leaderboard-272"><a href="#Leaderboard-272"><span class="linenos">272</span></a><span class="sd">        many games they played. The player with the most games has rank</span>
+</span><span id="Leaderboard-273"><a href="#Leaderboard-273"><span class="linenos">273</span></a><span class="sd">        0, and the ranks increase from there. Every player has a unique</span>
+</span><span id="Leaderboard-274"><a href="#Leaderboard-274"><span class="linenos">274</span></a><span class="sd">        rank, with ties going to the player that appears first in</span>
+</span><span id="Leaderboard-275"><a href="#Leaderboard-275"><span class="linenos">275</span></a><span class="sd">        `players`.</span>
+</span><span id="Leaderboard-276"><a href="#Leaderboard-276"><span class="linenos">276</span></a>
+</span><span id="Leaderboard-277"><a href="#Leaderboard-277"><span class="linenos">277</span></a><span class="sd">        The play count rankings are intended to be used as indices in an</span>
+</span><span id="Leaderboard-278"><a href="#Leaderboard-278"><span class="linenos">278</span></a><span class="sd">        ordered list of players.</span>
+</span><span id="Leaderboard-279"><a href="#Leaderboard-279"><span class="linenos">279</span></a>
+</span><span id="Leaderboard-280"><a href="#Leaderboard-280"><span class="linenos">280</span></a><span class="sd">        **Arguments:**</span>
 </span><span id="Leaderboard-281"><a href="#Leaderboard-281"><span class="linenos">281</span></a>
-</span><span id="Leaderboard-282"><a href="#Leaderboard-282"><span class="linenos">282</span></a><span class="sd">        **Arguments:**</span>
+</span><span id="Leaderboard-282"><a href="#Leaderboard-282"><span class="linenos">282</span></a><span class="sd">        * **player** (`Player`): The player whose rank to return.</span>
 </span><span id="Leaderboard-283"><a href="#Leaderboard-283"><span class="linenos">283</span></a>
-</span><span id="Leaderboard-284"><a href="#Leaderboard-284"><span class="linenos">284</span></a><span class="sd">        * **player** (`Player`): The player whose rank to return.</span>
+</span><span id="Leaderboard-284"><a href="#Leaderboard-284"><span class="linenos">284</span></a><span class="sd">        **Returns:**</span>
 </span><span id="Leaderboard-285"><a href="#Leaderboard-285"><span class="linenos">285</span></a>
-</span><span id="Leaderboard-286"><a href="#Leaderboard-286"><span class="linenos">286</span></a><span class="sd">        **Returns:**</span>
+</span><span id="Leaderboard-286"><a href="#Leaderboard-286"><span class="linenos">286</span></a><span class="sd">        * `int`: The rank of the player.</span>
 </span><span id="Leaderboard-287"><a href="#Leaderboard-287"><span class="linenos">287</span></a>
-</span><span id="Leaderboard-288"><a href="#Leaderboard-288"><span class="linenos">288</span></a><span class="sd">        * `int`: The rank of the player.</span>
-</span><span id="Leaderboard-289"><a href="#Leaderboard-289"><span class="linenos">289</span></a>
-</span><span id="Leaderboard-290"><a href="#Leaderboard-290"><span class="linenos">290</span></a><span class="sd">        &#39;&#39;&#39;</span>
-</span><span id="Leaderboard-291"><a href="#Leaderboard-291"><span class="linenos">291</span></a>        <span class="n">playCounts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">player</span><span class="o">.</span><span class="n">playCount</span> <span class="k">for</span> <span class="n">player</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">players</span><span class="p">])</span>
-</span><span id="Leaderboard-292"><a href="#Leaderboard-292"><span class="linenos">292</span></a>        <span class="n">countRanks</span> <span class="o">=</span> <span class="n">rankdata</span><span class="p">(</span><span class="o">-</span><span class="n">playCounts</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;ordinal&#39;</span><span class="p">)</span>
-</span><span id="Leaderboard-293"><a href="#Leaderboard-293"><span class="linenos">293</span></a>        <span class="k">return</span> <span class="n">countRanks</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">players</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">player</span><span class="p">)]</span> <span class="o">-</span> <span class="mi">1</span>
-</span><span id="Leaderboard-294"><a href="#Leaderboard-294"><span class="linenos">294</span></a>
-</span><span id="Leaderboard-295"><a href="#Leaderboard-295"><span class="linenos">295</span></a>    <span class="k">def</span> <span class="nf">highScoreRank</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">player</span><span class="p">):</span>
-</span><span id="Leaderboard-296"><a href="#Leaderboard-296"><span class="linenos">296</span></a>        <span class="sd">&#39;&#39;&#39;Returns the ranking of the given player, according to their</span>
-</span><span id="Leaderboard-297"><a href="#Leaderboard-297"><span class="linenos">297</span></a><span class="sd">        high score. The player with the best high score has rank 1, and</span>
-</span><span id="Leaderboard-298"><a href="#Leaderboard-298"><span class="linenos">298</span></a><span class="sd">        the ranks increase from there. Competition ranking is used to</span>
-</span><span id="Leaderboard-299"><a href="#Leaderboard-299"><span class="linenos">299</span></a><span class="sd">        handle ties.</span>
+</span><span id="Leaderboard-288"><a href="#Leaderboard-288"><span class="linenos">288</span></a><span class="sd">        &#39;&#39;&#39;</span>
+</span><span id="Leaderboard-289"><a href="#Leaderboard-289"><span class="linenos">289</span></a>        <span class="n">playCounts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">player</span><span class="o">.</span><span class="n">playCount</span> <span class="k">for</span> <span class="n">player</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">players</span><span class="p">])</span>
+</span><span id="Leaderboard-290"><a href="#Leaderboard-290"><span class="linenos">290</span></a>        <span class="n">countRanks</span> <span class="o">=</span> <span class="n">rankdata</span><span class="p">(</span><span class="o">-</span><span class="n">playCounts</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;ordinal&#39;</span><span class="p">)</span>
+</span><span id="Leaderboard-291"><a href="#Leaderboard-291"><span class="linenos">291</span></a>        <span class="k">return</span> <span class="n">countRanks</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">players</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">player</span><span class="p">)]</span> <span class="o">-</span> <span class="mi">1</span>
+</span><span id="Leaderboard-292"><a href="#Leaderboard-292"><span class="linenos">292</span></a>
+</span><span id="Leaderboard-293"><a href="#Leaderboard-293"><span class="linenos">293</span></a>    <span class="k">def</span> <span class="nf">highScoreRank</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">player</span><span class="p">):</span>
+</span><span id="Leaderboard-294"><a href="#Leaderboard-294"><span class="linenos">294</span></a>        <span class="sd">&#39;&#39;&#39;Returns the ranking of the given player, according to their</span>
+</span><span id="Leaderboard-295"><a href="#Leaderboard-295"><span class="linenos">295</span></a><span class="sd">        high score. The player with the best high score has rank 1, and</span>
+</span><span id="Leaderboard-296"><a href="#Leaderboard-296"><span class="linenos">296</span></a><span class="sd">        the ranks increase from there. Competition ranking is used to</span>
+</span><span id="Leaderboard-297"><a href="#Leaderboard-297"><span class="linenos">297</span></a><span class="sd">        handle ties.</span>
+</span><span id="Leaderboard-298"><a href="#Leaderboard-298"><span class="linenos">298</span></a>
+</span><span id="Leaderboard-299"><a href="#Leaderboard-299"><span class="linenos">299</span></a><span class="sd">        **Arguments:**</span>
 </span><span id="Leaderboard-300"><a href="#Leaderboard-300"><span class="linenos">300</span></a>
-</span><span id="Leaderboard-301"><a href="#Leaderboard-301"><span class="linenos">301</span></a><span class="sd">        **Arguments:**</span>
+</span><span id="Leaderboard-301"><a href="#Leaderboard-301"><span class="linenos">301</span></a><span class="sd">        * **player** (`Player`): The player whose rank to return.</span>
 </span><span id="Leaderboard-302"><a href="#Leaderboard-302"><span class="linenos">302</span></a>
-</span><span id="Leaderboard-303"><a href="#Leaderboard-303"><span class="linenos">303</span></a><span class="sd">        * **player** (`Player`): The player whose rank to return.</span>
+</span><span id="Leaderboard-303"><a href="#Leaderboard-303"><span class="linenos">303</span></a><span class="sd">        **Returns:**</span>
 </span><span id="Leaderboard-304"><a href="#Leaderboard-304"><span class="linenos">304</span></a>
-</span><span id="Leaderboard-305"><a href="#Leaderboard-305"><span class="linenos">305</span></a><span class="sd">        **Returns:**</span>
+</span><span id="Leaderboard-305"><a href="#Leaderboard-305"><span class="linenos">305</span></a><span class="sd">        * `int`: The rank of the player.</span>
 </span><span id="Leaderboard-306"><a href="#Leaderboard-306"><span class="linenos">306</span></a>
-</span><span id="Leaderboard-307"><a href="#Leaderboard-307"><span class="linenos">307</span></a><span class="sd">        * `int`: The rank of the player.</span>
-</span><span id="Leaderboard-308"><a href="#Leaderboard-308"><span class="linenos">308</span></a>
-</span><span id="Leaderboard-309"><a href="#Leaderboard-309"><span class="linenos">309</span></a><span class="sd">        &#39;&#39;&#39;</span>
-</span><span id="Leaderboard-310"><a href="#Leaderboard-310"><span class="linenos">310</span></a>        <span class="n">highScores</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">player</span><span class="o">.</span><span class="n">highScore</span> <span class="k">for</span> <span class="n">player</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">players</span><span class="p">])</span>
-</span><span id="Leaderboard-311"><a href="#Leaderboard-311"><span class="linenos">311</span></a>        <span class="n">highScoreRanks</span> <span class="o">=</span> <span class="n">rankdata</span><span class="p">(</span><span class="o">-</span><span class="n">highScores</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;min&#39;</span><span class="p">)</span>
-</span><span id="Leaderboard-312"><a href="#Leaderboard-312"><span class="linenos">312</span></a>        <span class="k">return</span> <span class="n">highScoreRanks</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">players</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">player</span><span class="p">)]</span>
-</span><span id="Leaderboard-313"><a href="#Leaderboard-313"><span class="linenos">313</span></a>
-</span><span id="Leaderboard-314"><a href="#Leaderboard-314"><span class="linenos">314</span></a>    <span class="k">def</span> <span class="nf">avgScoreRank</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">player</span><span class="p">):</span>
-</span><span id="Leaderboard-315"><a href="#Leaderboard-315"><span class="linenos">315</span></a>        <span class="sd">&#39;&#39;&#39;Returns the ranking of the given player, according to their</span>
-</span><span id="Leaderboard-316"><a href="#Leaderboard-316"><span class="linenos">316</span></a><span class="sd">        average score. The player with the best average score has rank</span>
-</span><span id="Leaderboard-317"><a href="#Leaderboard-317"><span class="linenos">317</span></a><span class="sd">        1, and the ranks increase from there. Average scores are rounded</span>
-</span><span id="Leaderboard-318"><a href="#Leaderboard-318"><span class="linenos">318</span></a><span class="sd">        to the nearest integer before ranks are computed. Competition</span>
-</span><span id="Leaderboard-319"><a href="#Leaderboard-319"><span class="linenos">319</span></a><span class="sd">        ranking is used to handle ties.</span>
+</span><span id="Leaderboard-307"><a href="#Leaderboard-307"><span class="linenos">307</span></a><span class="sd">        &#39;&#39;&#39;</span>
+</span><span id="Leaderboard-308"><a href="#Leaderboard-308"><span class="linenos">308</span></a>        <span class="n">highScores</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">player</span><span class="o">.</span><span class="n">highScore</span> <span class="k">for</span> <span class="n">player</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">players</span><span class="p">])</span>
+</span><span id="Leaderboard-309"><a href="#Leaderboard-309"><span class="linenos">309</span></a>        <span class="n">highScoreRanks</span> <span class="o">=</span> <span class="n">rankdata</span><span class="p">(</span><span class="o">-</span><span class="n">highScores</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;min&#39;</span><span class="p">)</span>
+</span><span id="Leaderboard-310"><a href="#Leaderboard-310"><span class="linenos">310</span></a>        <span class="k">return</span> <span class="n">highScoreRanks</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">players</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">player</span><span class="p">)]</span>
+</span><span id="Leaderboard-311"><a href="#Leaderboard-311"><span class="linenos">311</span></a>
+</span><span id="Leaderboard-312"><a href="#Leaderboard-312"><span class="linenos">312</span></a>    <span class="k">def</span> <span class="nf">avgScoreRank</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">player</span><span class="p">):</span>
+</span><span id="Leaderboard-313"><a href="#Leaderboard-313"><span class="linenos">313</span></a>        <span class="sd">&#39;&#39;&#39;Returns the ranking of the given player, according to their</span>
+</span><span id="Leaderboard-314"><a href="#Leaderboard-314"><span class="linenos">314</span></a><span class="sd">        average score. The player with the best average score has rank</span>
+</span><span id="Leaderboard-315"><a href="#Leaderboard-315"><span class="linenos">315</span></a><span class="sd">        1, and the ranks increase from there. Average scores are rounded</span>
+</span><span id="Leaderboard-316"><a href="#Leaderboard-316"><span class="linenos">316</span></a><span class="sd">        to the nearest integer before ranks are computed. Competition</span>
+</span><span id="Leaderboard-317"><a href="#Leaderboard-317"><span class="linenos">317</span></a><span class="sd">        ranking is used to handle ties.</span>
+</span><span id="Leaderboard-318"><a href="#Leaderboard-318"><span class="linenos">318</span></a>
+</span><span id="Leaderboard-319"><a href="#Leaderboard-319"><span class="linenos">319</span></a><span class="sd">        **Arguments:**</span>
 </span><span id="Leaderboard-320"><a href="#Leaderboard-320"><span class="linenos">320</span></a>
-</span><span id="Leaderboard-321"><a href="#Leaderboard-321"><span class="linenos">321</span></a><span class="sd">        **Arguments:**</span>
+</span><span id="Leaderboard-321"><a href="#Leaderboard-321"><span class="linenos">321</span></a><span class="sd">        * **player** (`Player`): The player whose rank to return.</span>
 </span><span id="Leaderboard-322"><a href="#Leaderboard-322"><span class="linenos">322</span></a>
-</span><span id="Leaderboard-323"><a href="#Leaderboard-323"><span class="linenos">323</span></a><span class="sd">        * **player** (`Player`): The player whose rank to return.</span>
+</span><span id="Leaderboard-323"><a href="#Leaderboard-323"><span class="linenos">323</span></a><span class="sd">        **Returns:**</span>
 </span><span id="Leaderboard-324"><a href="#Leaderboard-324"><span class="linenos">324</span></a>
-</span><span id="Leaderboard-325"><a href="#Leaderboard-325"><span class="linenos">325</span></a><span class="sd">        **Returns:**</span>
+</span><span id="Leaderboard-325"><a href="#Leaderboard-325"><span class="linenos">325</span></a><span class="sd">        * `int`: The rank of the player.</span>
 </span><span id="Leaderboard-326"><a href="#Leaderboard-326"><span class="linenos">326</span></a>
-</span><span id="Leaderboard-327"><a href="#Leaderboard-327"><span class="linenos">327</span></a><span class="sd">        * `int`: The rank of the player.</span>
-</span><span id="Leaderboard-328"><a href="#Leaderboard-328"><span class="linenos">328</span></a>
-</span><span id="Leaderboard-329"><a href="#Leaderboard-329"><span class="linenos">329</span></a><span class="sd">        &#39;&#39;&#39;</span>
-</span><span id="Leaderboard-330"><a href="#Leaderboard-330"><span class="linenos">330</span></a>        <span class="n">avgScores</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span>
-</span><span id="Leaderboard-331"><a href="#Leaderboard-331"><span class="linenos">331</span></a>            <span class="p">[</span><span class="nb">round</span><span class="p">(</span><span class="n">player</span><span class="o">.</span><span class="n">avgScore</span><span class="p">)</span> <span class="k">for</span> <span class="n">player</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">players</span><span class="p">]</span>
-</span><span id="Leaderboard-332"><a href="#Leaderboard-332"><span class="linenos">332</span></a>        <span class="p">)</span>
-</span><span id="Leaderboard-333"><a href="#Leaderboard-333"><span class="linenos">333</span></a>        <span class="n">avgScoreRanks</span> <span class="o">=</span> <span class="n">rankdata</span><span class="p">(</span><span class="o">-</span><span class="n">avgScores</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;min&#39;</span><span class="p">)</span>
-</span><span id="Leaderboard-334"><a href="#Leaderboard-334"><span class="linenos">334</span></a>        <span class="k">return</span> <span class="n">avgScoreRanks</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">players</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">player</span><span class="p">)]</span>
+</span><span id="Leaderboard-327"><a href="#Leaderboard-327"><span class="linenos">327</span></a><span class="sd">        &#39;&#39;&#39;</span>
+</span><span id="Leaderboard-328"><a href="#Leaderboard-328"><span class="linenos">328</span></a>        <span class="n">avgScores</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span>
+</span><span id="Leaderboard-329"><a href="#Leaderboard-329"><span class="linenos">329</span></a>            <span class="p">[</span><span class="nb">round</span><span class="p">(</span><span class="n">player</span><span class="o">.</span><span class="n">avgScore</span><span class="p">)</span> <span class="k">for</span> <span class="n">player</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">players</span><span class="p">]</span>
+</span><span id="Leaderboard-330"><a href="#Leaderboard-330"><span class="linenos">330</span></a>        <span class="p">)</span>
+</span><span id="Leaderboard-331"><a href="#Leaderboard-331"><span class="linenos">331</span></a>        <span class="n">avgScoreRanks</span> <span class="o">=</span> <span class="n">rankdata</span><span class="p">(</span><span class="o">-</span><span class="n">avgScores</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;min&#39;</span><span class="p">)</span>
+</span><span id="Leaderboard-332"><a href="#Leaderboard-332"><span class="linenos">332</span></a>        <span class="k">return</span> <span class="n">avgScoreRanks</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">players</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">player</span><span class="p">)]</span>
 </span></pre></div>
 
 
@@ -1169,15 +1162,15 @@ theoretical long-term average score.</p>
 
     </div>
     <a class="headerlink" href="#Leaderboard.__init__"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="Leaderboard.__init__-262"><a href="#Leaderboard.__init__-262"><span class="linenos">262</span></a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">players</span><span class="p">):</span>
-</span><span id="Leaderboard.__init__-263"><a href="#Leaderboard.__init__-263"><span class="linenos">263</span></a>        <span class="sd">&#39;&#39;&#39;Creates a `Leaderboard` instance from the given list of</span>
-</span><span id="Leaderboard.__init__-264"><a href="#Leaderboard.__init__-264"><span class="linenos">264</span></a><span class="sd">        players.</span>
-</span><span id="Leaderboard.__init__-265"><a href="#Leaderboard.__init__-265"><span class="linenos">265</span></a>
-</span><span id="Leaderboard.__init__-266"><a href="#Leaderboard.__init__-266"><span class="linenos">266</span></a><span class="sd">        &#39;&#39;&#39;</span>
-</span><span id="Leaderboard.__init__-267"><a href="#Leaderboard.__init__-267"><span class="linenos">267</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">players</span> <span class="o">=</span> <span class="n">players</span>
-</span><span id="Leaderboard.__init__-268"><a href="#Leaderboard.__init__-268"><span class="linenos">268</span></a>        <span class="sd">&#39;&#39;&#39;`list`[`Player`]: The list of `Player` objects that are on</span>
-</span><span id="Leaderboard.__init__-269"><a href="#Leaderboard.__init__-269"><span class="linenos">269</span></a><span class="sd">        the leaderboard.</span>
-</span><span id="Leaderboard.__init__-270"><a href="#Leaderboard.__init__-270"><span class="linenos">270</span></a><span class="sd">        &#39;&#39;&#39;</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="Leaderboard.__init__-260"><a href="#Leaderboard.__init__-260"><span class="linenos">260</span></a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">players</span><span class="p">):</span>
+</span><span id="Leaderboard.__init__-261"><a href="#Leaderboard.__init__-261"><span class="linenos">261</span></a>        <span class="sd">&#39;&#39;&#39;Creates a `Leaderboard` instance from the given list of</span>
+</span><span id="Leaderboard.__init__-262"><a href="#Leaderboard.__init__-262"><span class="linenos">262</span></a><span class="sd">        players.</span>
+</span><span id="Leaderboard.__init__-263"><a href="#Leaderboard.__init__-263"><span class="linenos">263</span></a>
+</span><span id="Leaderboard.__init__-264"><a href="#Leaderboard.__init__-264"><span class="linenos">264</span></a><span class="sd">        &#39;&#39;&#39;</span>
+</span><span id="Leaderboard.__init__-265"><a href="#Leaderboard.__init__-265"><span class="linenos">265</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">players</span> <span class="o">=</span> <span class="n">players</span>
+</span><span id="Leaderboard.__init__-266"><a href="#Leaderboard.__init__-266"><span class="linenos">266</span></a>        <span class="sd">&#39;&#39;&#39;`list`[`Player`]: The list of `Player` objects that are on</span>
+</span><span id="Leaderboard.__init__-267"><a href="#Leaderboard.__init__-267"><span class="linenos">267</span></a><span class="sd">        the leaderboard.</span>
+</span><span id="Leaderboard.__init__-268"><a href="#Leaderboard.__init__-268"><span class="linenos">268</span></a><span class="sd">        &#39;&#39;&#39;</span>
 </span></pre></div>
 
 
@@ -1212,38 +1205,38 @@ the leaderboard.</p>
 
     </div>
     <a class="headerlink" href="#Leaderboard.playCountRank"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="Leaderboard.playCountRank-272"><a href="#Leaderboard.playCountRank-272"><span class="linenos">272</span></a>    <span class="k">def</span> <span class="nf">playCountRank</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">player</span><span class="p">):</span>
-</span><span id="Leaderboard.playCountRank-273"><a href="#Leaderboard.playCountRank-273"><span class="linenos">273</span></a>        <span class="sd">&#39;&#39;&#39;Returns the ranking of the given player, according to how</span>
-</span><span id="Leaderboard.playCountRank-274"><a href="#Leaderboard.playCountRank-274"><span class="linenos">274</span></a><span class="sd">        many games they played. The player with the most games has rank</span>
-</span><span id="Leaderboard.playCountRank-275"><a href="#Leaderboard.playCountRank-275"><span class="linenos">275</span></a><span class="sd">        0, and the ranks increase from there. Every player has a unique</span>
-</span><span id="Leaderboard.playCountRank-276"><a href="#Leaderboard.playCountRank-276"><span class="linenos">276</span></a><span class="sd">        rank, with ties going to the player that was added earlier to</span>
-</span><span id="Leaderboard.playCountRank-277"><a href="#Leaderboard.playCountRank-277"><span class="linenos">277</span></a><span class="sd">        the leaderboard.</span>
-</span><span id="Leaderboard.playCountRank-278"><a href="#Leaderboard.playCountRank-278"><span class="linenos">278</span></a>
-</span><span id="Leaderboard.playCountRank-279"><a href="#Leaderboard.playCountRank-279"><span class="linenos">279</span></a><span class="sd">        The play count ranking are intended to be used as indices in an</span>
-</span><span id="Leaderboard.playCountRank-280"><a href="#Leaderboard.playCountRank-280"><span class="linenos">280</span></a><span class="sd">        ordered list of players.</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="Leaderboard.playCountRank-270"><a href="#Leaderboard.playCountRank-270"><span class="linenos">270</span></a>    <span class="k">def</span> <span class="nf">playCountRank</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">player</span><span class="p">):</span>
+</span><span id="Leaderboard.playCountRank-271"><a href="#Leaderboard.playCountRank-271"><span class="linenos">271</span></a>        <span class="sd">&#39;&#39;&#39;Returns the ranking of the given player, according to how</span>
+</span><span id="Leaderboard.playCountRank-272"><a href="#Leaderboard.playCountRank-272"><span class="linenos">272</span></a><span class="sd">        many games they played. The player with the most games has rank</span>
+</span><span id="Leaderboard.playCountRank-273"><a href="#Leaderboard.playCountRank-273"><span class="linenos">273</span></a><span class="sd">        0, and the ranks increase from there. Every player has a unique</span>
+</span><span id="Leaderboard.playCountRank-274"><a href="#Leaderboard.playCountRank-274"><span class="linenos">274</span></a><span class="sd">        rank, with ties going to the player that appears first in</span>
+</span><span id="Leaderboard.playCountRank-275"><a href="#Leaderboard.playCountRank-275"><span class="linenos">275</span></a><span class="sd">        `players`.</span>
+</span><span id="Leaderboard.playCountRank-276"><a href="#Leaderboard.playCountRank-276"><span class="linenos">276</span></a>
+</span><span id="Leaderboard.playCountRank-277"><a href="#Leaderboard.playCountRank-277"><span class="linenos">277</span></a><span class="sd">        The play count rankings are intended to be used as indices in an</span>
+</span><span id="Leaderboard.playCountRank-278"><a href="#Leaderboard.playCountRank-278"><span class="linenos">278</span></a><span class="sd">        ordered list of players.</span>
+</span><span id="Leaderboard.playCountRank-279"><a href="#Leaderboard.playCountRank-279"><span class="linenos">279</span></a>
+</span><span id="Leaderboard.playCountRank-280"><a href="#Leaderboard.playCountRank-280"><span class="linenos">280</span></a><span class="sd">        **Arguments:**</span>
 </span><span id="Leaderboard.playCountRank-281"><a href="#Leaderboard.playCountRank-281"><span class="linenos">281</span></a>
-</span><span id="Leaderboard.playCountRank-282"><a href="#Leaderboard.playCountRank-282"><span class="linenos">282</span></a><span class="sd">        **Arguments:**</span>
+</span><span id="Leaderboard.playCountRank-282"><a href="#Leaderboard.playCountRank-282"><span class="linenos">282</span></a><span class="sd">        * **player** (`Player`): The player whose rank to return.</span>
 </span><span id="Leaderboard.playCountRank-283"><a href="#Leaderboard.playCountRank-283"><span class="linenos">283</span></a>
-</span><span id="Leaderboard.playCountRank-284"><a href="#Leaderboard.playCountRank-284"><span class="linenos">284</span></a><span class="sd">        * **player** (`Player`): The player whose rank to return.</span>
+</span><span id="Leaderboard.playCountRank-284"><a href="#Leaderboard.playCountRank-284"><span class="linenos">284</span></a><span class="sd">        **Returns:**</span>
 </span><span id="Leaderboard.playCountRank-285"><a href="#Leaderboard.playCountRank-285"><span class="linenos">285</span></a>
-</span><span id="Leaderboard.playCountRank-286"><a href="#Leaderboard.playCountRank-286"><span class="linenos">286</span></a><span class="sd">        **Returns:**</span>
+</span><span id="Leaderboard.playCountRank-286"><a href="#Leaderboard.playCountRank-286"><span class="linenos">286</span></a><span class="sd">        * `int`: The rank of the player.</span>
 </span><span id="Leaderboard.playCountRank-287"><a href="#Leaderboard.playCountRank-287"><span class="linenos">287</span></a>
-</span><span id="Leaderboard.playCountRank-288"><a href="#Leaderboard.playCountRank-288"><span class="linenos">288</span></a><span class="sd">        * `int`: The rank of the player.</span>
-</span><span id="Leaderboard.playCountRank-289"><a href="#Leaderboard.playCountRank-289"><span class="linenos">289</span></a>
-</span><span id="Leaderboard.playCountRank-290"><a href="#Leaderboard.playCountRank-290"><span class="linenos">290</span></a><span class="sd">        &#39;&#39;&#39;</span>
-</span><span id="Leaderboard.playCountRank-291"><a href="#Leaderboard.playCountRank-291"><span class="linenos">291</span></a>        <span class="n">playCounts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">player</span><span class="o">.</span><span class="n">playCount</span> <span class="k">for</span> <span class="n">player</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">players</span><span class="p">])</span>
-</span><span id="Leaderboard.playCountRank-292"><a href="#Leaderboard.playCountRank-292"><span class="linenos">292</span></a>        <span class="n">countRanks</span> <span class="o">=</span> <span class="n">rankdata</span><span class="p">(</span><span class="o">-</span><span class="n">playCounts</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;ordinal&#39;</span><span class="p">)</span>
-</span><span id="Leaderboard.playCountRank-293"><a href="#Leaderboard.playCountRank-293"><span class="linenos">293</span></a>        <span class="k">return</span> <span class="n">countRanks</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">players</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">player</span><span class="p">)]</span> <span class="o">-</span> <span class="mi">1</span>
+</span><span id="Leaderboard.playCountRank-288"><a href="#Leaderboard.playCountRank-288"><span class="linenos">288</span></a><span class="sd">        &#39;&#39;&#39;</span>
+</span><span id="Leaderboard.playCountRank-289"><a href="#Leaderboard.playCountRank-289"><span class="linenos">289</span></a>        <span class="n">playCounts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">player</span><span class="o">.</span><span class="n">playCount</span> <span class="k">for</span> <span class="n">player</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">players</span><span class="p">])</span>
+</span><span id="Leaderboard.playCountRank-290"><a href="#Leaderboard.playCountRank-290"><span class="linenos">290</span></a>        <span class="n">countRanks</span> <span class="o">=</span> <span class="n">rankdata</span><span class="p">(</span><span class="o">-</span><span class="n">playCounts</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;ordinal&#39;</span><span class="p">)</span>
+</span><span id="Leaderboard.playCountRank-291"><a href="#Leaderboard.playCountRank-291"><span class="linenos">291</span></a>        <span class="k">return</span> <span class="n">countRanks</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">players</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">player</span><span class="p">)]</span> <span class="o">-</span> <span class="mi">1</span>
 </span></pre></div>
 
 
             <div class="docstring"><p>Returns the ranking of the given player, according to how
 many games they played. The player with the most games has rank
 0, and the ranks increase from there. Every player has a unique
-rank, with ties going to the player that was added earlier to
-the leaderboard.</p>
+rank, with ties going to the player that appears first in
+<code><a href="#Leaderboard.players">players</a></code>.</p>
 
-<p>The play count ranking are intended to be used as indices in an
+<p>The play count rankings are intended to be used as indices in an
 ordered list of players.</p>
 
 <p><strong>Arguments:</strong></p>
@@ -1272,24 +1265,24 @@ ordered list of players.</p>
 
     </div>
     <a class="headerlink" href="#Leaderboard.highScoreRank"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="Leaderboard.highScoreRank-295"><a href="#Leaderboard.highScoreRank-295"><span class="linenos">295</span></a>    <span class="k">def</span> <span class="nf">highScoreRank</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">player</span><span class="p">):</span>
-</span><span id="Leaderboard.highScoreRank-296"><a href="#Leaderboard.highScoreRank-296"><span class="linenos">296</span></a>        <span class="sd">&#39;&#39;&#39;Returns the ranking of the given player, according to their</span>
-</span><span id="Leaderboard.highScoreRank-297"><a href="#Leaderboard.highScoreRank-297"><span class="linenos">297</span></a><span class="sd">        high score. The player with the best high score has rank 1, and</span>
-</span><span id="Leaderboard.highScoreRank-298"><a href="#Leaderboard.highScoreRank-298"><span class="linenos">298</span></a><span class="sd">        the ranks increase from there. Competition ranking is used to</span>
-</span><span id="Leaderboard.highScoreRank-299"><a href="#Leaderboard.highScoreRank-299"><span class="linenos">299</span></a><span class="sd">        handle ties.</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="Leaderboard.highScoreRank-293"><a href="#Leaderboard.highScoreRank-293"><span class="linenos">293</span></a>    <span class="k">def</span> <span class="nf">highScoreRank</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">player</span><span class="p">):</span>
+</span><span id="Leaderboard.highScoreRank-294"><a href="#Leaderboard.highScoreRank-294"><span class="linenos">294</span></a>        <span class="sd">&#39;&#39;&#39;Returns the ranking of the given player, according to their</span>
+</span><span id="Leaderboard.highScoreRank-295"><a href="#Leaderboard.highScoreRank-295"><span class="linenos">295</span></a><span class="sd">        high score. The player with the best high score has rank 1, and</span>
+</span><span id="Leaderboard.highScoreRank-296"><a href="#Leaderboard.highScoreRank-296"><span class="linenos">296</span></a><span class="sd">        the ranks increase from there. Competition ranking is used to</span>
+</span><span id="Leaderboard.highScoreRank-297"><a href="#Leaderboard.highScoreRank-297"><span class="linenos">297</span></a><span class="sd">        handle ties.</span>
+</span><span id="Leaderboard.highScoreRank-298"><a href="#Leaderboard.highScoreRank-298"><span class="linenos">298</span></a>
+</span><span id="Leaderboard.highScoreRank-299"><a href="#Leaderboard.highScoreRank-299"><span class="linenos">299</span></a><span class="sd">        **Arguments:**</span>
 </span><span id="Leaderboard.highScoreRank-300"><a href="#Leaderboard.highScoreRank-300"><span class="linenos">300</span></a>
-</span><span id="Leaderboard.highScoreRank-301"><a href="#Leaderboard.highScoreRank-301"><span class="linenos">301</span></a><span class="sd">        **Arguments:**</span>
+</span><span id="Leaderboard.highScoreRank-301"><a href="#Leaderboard.highScoreRank-301"><span class="linenos">301</span></a><span class="sd">        * **player** (`Player`): The player whose rank to return.</span>
 </span><span id="Leaderboard.highScoreRank-302"><a href="#Leaderboard.highScoreRank-302"><span class="linenos">302</span></a>
-</span><span id="Leaderboard.highScoreRank-303"><a href="#Leaderboard.highScoreRank-303"><span class="linenos">303</span></a><span class="sd">        * **player** (`Player`): The player whose rank to return.</span>
+</span><span id="Leaderboard.highScoreRank-303"><a href="#Leaderboard.highScoreRank-303"><span class="linenos">303</span></a><span class="sd">        **Returns:**</span>
 </span><span id="Leaderboard.highScoreRank-304"><a href="#Leaderboard.highScoreRank-304"><span class="linenos">304</span></a>
-</span><span id="Leaderboard.highScoreRank-305"><a href="#Leaderboard.highScoreRank-305"><span class="linenos">305</span></a><span class="sd">        **Returns:**</span>
+</span><span id="Leaderboard.highScoreRank-305"><a href="#Leaderboard.highScoreRank-305"><span class="linenos">305</span></a><span class="sd">        * `int`: The rank of the player.</span>
 </span><span id="Leaderboard.highScoreRank-306"><a href="#Leaderboard.highScoreRank-306"><span class="linenos">306</span></a>
-</span><span id="Leaderboard.highScoreRank-307"><a href="#Leaderboard.highScoreRank-307"><span class="linenos">307</span></a><span class="sd">        * `int`: The rank of the player.</span>
-</span><span id="Leaderboard.highScoreRank-308"><a href="#Leaderboard.highScoreRank-308"><span class="linenos">308</span></a>
-</span><span id="Leaderboard.highScoreRank-309"><a href="#Leaderboard.highScoreRank-309"><span class="linenos">309</span></a><span class="sd">        &#39;&#39;&#39;</span>
-</span><span id="Leaderboard.highScoreRank-310"><a href="#Leaderboard.highScoreRank-310"><span class="linenos">310</span></a>        <span class="n">highScores</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">player</span><span class="o">.</span><span class="n">highScore</span> <span class="k">for</span> <span class="n">player</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">players</span><span class="p">])</span>
-</span><span id="Leaderboard.highScoreRank-311"><a href="#Leaderboard.highScoreRank-311"><span class="linenos">311</span></a>        <span class="n">highScoreRanks</span> <span class="o">=</span> <span class="n">rankdata</span><span class="p">(</span><span class="o">-</span><span class="n">highScores</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;min&#39;</span><span class="p">)</span>
-</span><span id="Leaderboard.highScoreRank-312"><a href="#Leaderboard.highScoreRank-312"><span class="linenos">312</span></a>        <span class="k">return</span> <span class="n">highScoreRanks</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">players</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">player</span><span class="p">)]</span>
+</span><span id="Leaderboard.highScoreRank-307"><a href="#Leaderboard.highScoreRank-307"><span class="linenos">307</span></a><span class="sd">        &#39;&#39;&#39;</span>
+</span><span id="Leaderboard.highScoreRank-308"><a href="#Leaderboard.highScoreRank-308"><span class="linenos">308</span></a>        <span class="n">highScores</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">player</span><span class="o">.</span><span class="n">highScore</span> <span class="k">for</span> <span class="n">player</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">players</span><span class="p">])</span>
+</span><span id="Leaderboard.highScoreRank-309"><a href="#Leaderboard.highScoreRank-309"><span class="linenos">309</span></a>        <span class="n">highScoreRanks</span> <span class="o">=</span> <span class="n">rankdata</span><span class="p">(</span><span class="o">-</span><span class="n">highScores</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;min&#39;</span><span class="p">)</span>
+</span><span id="Leaderboard.highScoreRank-310"><a href="#Leaderboard.highScoreRank-310"><span class="linenos">310</span></a>        <span class="k">return</span> <span class="n">highScoreRanks</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">players</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">player</span><span class="p">)]</span>
 </span></pre></div>
 
 
@@ -1324,27 +1317,27 @@ handle ties.</p>
 
     </div>
     <a class="headerlink" href="#Leaderboard.avgScoreRank"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="Leaderboard.avgScoreRank-314"><a href="#Leaderboard.avgScoreRank-314"><span class="linenos">314</span></a>    <span class="k">def</span> <span class="nf">avgScoreRank</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">player</span><span class="p">):</span>
-</span><span id="Leaderboard.avgScoreRank-315"><a href="#Leaderboard.avgScoreRank-315"><span class="linenos">315</span></a>        <span class="sd">&#39;&#39;&#39;Returns the ranking of the given player, according to their</span>
-</span><span id="Leaderboard.avgScoreRank-316"><a href="#Leaderboard.avgScoreRank-316"><span class="linenos">316</span></a><span class="sd">        average score. The player with the best average score has rank</span>
-</span><span id="Leaderboard.avgScoreRank-317"><a href="#Leaderboard.avgScoreRank-317"><span class="linenos">317</span></a><span class="sd">        1, and the ranks increase from there. Average scores are rounded</span>
-</span><span id="Leaderboard.avgScoreRank-318"><a href="#Leaderboard.avgScoreRank-318"><span class="linenos">318</span></a><span class="sd">        to the nearest integer before ranks are computed. Competition</span>
-</span><span id="Leaderboard.avgScoreRank-319"><a href="#Leaderboard.avgScoreRank-319"><span class="linenos">319</span></a><span class="sd">        ranking is used to handle ties.</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="Leaderboard.avgScoreRank-312"><a href="#Leaderboard.avgScoreRank-312"><span class="linenos">312</span></a>    <span class="k">def</span> <span class="nf">avgScoreRank</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">player</span><span class="p">):</span>
+</span><span id="Leaderboard.avgScoreRank-313"><a href="#Leaderboard.avgScoreRank-313"><span class="linenos">313</span></a>        <span class="sd">&#39;&#39;&#39;Returns the ranking of the given player, according to their</span>
+</span><span id="Leaderboard.avgScoreRank-314"><a href="#Leaderboard.avgScoreRank-314"><span class="linenos">314</span></a><span class="sd">        average score. The player with the best average score has rank</span>
+</span><span id="Leaderboard.avgScoreRank-315"><a href="#Leaderboard.avgScoreRank-315"><span class="linenos">315</span></a><span class="sd">        1, and the ranks increase from there. Average scores are rounded</span>
+</span><span id="Leaderboard.avgScoreRank-316"><a href="#Leaderboard.avgScoreRank-316"><span class="linenos">316</span></a><span class="sd">        to the nearest integer before ranks are computed. Competition</span>
+</span><span id="Leaderboard.avgScoreRank-317"><a href="#Leaderboard.avgScoreRank-317"><span class="linenos">317</span></a><span class="sd">        ranking is used to handle ties.</span>
+</span><span id="Leaderboard.avgScoreRank-318"><a href="#Leaderboard.avgScoreRank-318"><span class="linenos">318</span></a>
+</span><span id="Leaderboard.avgScoreRank-319"><a href="#Leaderboard.avgScoreRank-319"><span class="linenos">319</span></a><span class="sd">        **Arguments:**</span>
 </span><span id="Leaderboard.avgScoreRank-320"><a href="#Leaderboard.avgScoreRank-320"><span class="linenos">320</span></a>
-</span><span id="Leaderboard.avgScoreRank-321"><a href="#Leaderboard.avgScoreRank-321"><span class="linenos">321</span></a><span class="sd">        **Arguments:**</span>
+</span><span id="Leaderboard.avgScoreRank-321"><a href="#Leaderboard.avgScoreRank-321"><span class="linenos">321</span></a><span class="sd">        * **player** (`Player`): The player whose rank to return.</span>
 </span><span id="Leaderboard.avgScoreRank-322"><a href="#Leaderboard.avgScoreRank-322"><span class="linenos">322</span></a>
-</span><span id="Leaderboard.avgScoreRank-323"><a href="#Leaderboard.avgScoreRank-323"><span class="linenos">323</span></a><span class="sd">        * **player** (`Player`): The player whose rank to return.</span>
+</span><span id="Leaderboard.avgScoreRank-323"><a href="#Leaderboard.avgScoreRank-323"><span class="linenos">323</span></a><span class="sd">        **Returns:**</span>
 </span><span id="Leaderboard.avgScoreRank-324"><a href="#Leaderboard.avgScoreRank-324"><span class="linenos">324</span></a>
-</span><span id="Leaderboard.avgScoreRank-325"><a href="#Leaderboard.avgScoreRank-325"><span class="linenos">325</span></a><span class="sd">        **Returns:**</span>
+</span><span id="Leaderboard.avgScoreRank-325"><a href="#Leaderboard.avgScoreRank-325"><span class="linenos">325</span></a><span class="sd">        * `int`: The rank of the player.</span>
 </span><span id="Leaderboard.avgScoreRank-326"><a href="#Leaderboard.avgScoreRank-326"><span class="linenos">326</span></a>
-</span><span id="Leaderboard.avgScoreRank-327"><a href="#Leaderboard.avgScoreRank-327"><span class="linenos">327</span></a><span class="sd">        * `int`: The rank of the player.</span>
-</span><span id="Leaderboard.avgScoreRank-328"><a href="#Leaderboard.avgScoreRank-328"><span class="linenos">328</span></a>
-</span><span id="Leaderboard.avgScoreRank-329"><a href="#Leaderboard.avgScoreRank-329"><span class="linenos">329</span></a><span class="sd">        &#39;&#39;&#39;</span>
-</span><span id="Leaderboard.avgScoreRank-330"><a href="#Leaderboard.avgScoreRank-330"><span class="linenos">330</span></a>        <span class="n">avgScores</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span>
-</span><span id="Leaderboard.avgScoreRank-331"><a href="#Leaderboard.avgScoreRank-331"><span class="linenos">331</span></a>            <span class="p">[</span><span class="nb">round</span><span class="p">(</span><span class="n">player</span><span class="o">.</span><span class="n">avgScore</span><span class="p">)</span> <span class="k">for</span> <span class="n">player</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">players</span><span class="p">]</span>
-</span><span id="Leaderboard.avgScoreRank-332"><a href="#Leaderboard.avgScoreRank-332"><span class="linenos">332</span></a>        <span class="p">)</span>
-</span><span id="Leaderboard.avgScoreRank-333"><a href="#Leaderboard.avgScoreRank-333"><span class="linenos">333</span></a>        <span class="n">avgScoreRanks</span> <span class="o">=</span> <span class="n">rankdata</span><span class="p">(</span><span class="o">-</span><span class="n">avgScores</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;min&#39;</span><span class="p">)</span>
-</span><span id="Leaderboard.avgScoreRank-334"><a href="#Leaderboard.avgScoreRank-334"><span class="linenos">334</span></a>        <span class="k">return</span> <span class="n">avgScoreRanks</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">players</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">player</span><span class="p">)]</span>
+</span><span id="Leaderboard.avgScoreRank-327"><a href="#Leaderboard.avgScoreRank-327"><span class="linenos">327</span></a><span class="sd">        &#39;&#39;&#39;</span>
+</span><span id="Leaderboard.avgScoreRank-328"><a href="#Leaderboard.avgScoreRank-328"><span class="linenos">328</span></a>        <span class="n">avgScores</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span>
+</span><span id="Leaderboard.avgScoreRank-329"><a href="#Leaderboard.avgScoreRank-329"><span class="linenos">329</span></a>            <span class="p">[</span><span class="nb">round</span><span class="p">(</span><span class="n">player</span><span class="o">.</span><span class="n">avgScore</span><span class="p">)</span> <span class="k">for</span> <span class="n">player</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">players</span><span class="p">]</span>
+</span><span id="Leaderboard.avgScoreRank-330"><a href="#Leaderboard.avgScoreRank-330"><span class="linenos">330</span></a>        <span class="p">)</span>
+</span><span id="Leaderboard.avgScoreRank-331"><a href="#Leaderboard.avgScoreRank-331"><span class="linenos">331</span></a>        <span class="n">avgScoreRanks</span> <span class="o">=</span> <span class="n">rankdata</span><span class="p">(</span><span class="o">-</span><span class="n">avgScores</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;min&#39;</span><span class="p">)</span>
+</span><span id="Leaderboard.avgScoreRank-332"><a href="#Leaderboard.avgScoreRank-332"><span class="linenos">332</span></a>        <span class="k">return</span> <span class="n">avgScoreRanks</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">players</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">player</span><span class="p">)]</span>
 </span></pre></div>
 
 
