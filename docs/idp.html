@@ -65,6 +65,7 @@
             <h2>Submodules</h2>
             <ul>
                     <li><a href="idp/tools.html">tools</a></li>
+                    <li><a href="idp/gamedata.html">gamedata</a></li>
             </ul>
 
             <h2>API Documentation</h2>
@@ -351,7 +352,7 @@ same as if we did 6,067 direct simulations.</p>
 <p>Imagine a box of 320 thumbtacks. We flick each thumbtack 9 times. If it
 lands point up, we call it a success. Point down is a failure. Because
 of the imperfections, each thumbtack has its own probability of success.
-The file, <code>tacks.json</code>, lists the number of successes in 9 flicks for
+The file, <code>tackexpl.json</code>, lists the number of successes in 9 flicks for
 all 320 thumbtacks. They are:</p>
 
 <blockquote>
@@ -454,7 +455,7 @@ the products and the actions are the ratings that each product earns.
 Each individual rating must be a whole number of stars between 1 and 5,
 inclusive. Hence, each action has 5 possible outcomes.</p>
 
-<p>The file, <code>reviews.csv</code>, contains all the data for this example. This
+<p>The file, <code>revexpl.csv</code>, contains all the data for this example. This
 file has 51 rows (one header row and one row for each product). The rows
 are ordered so that the products with the most reviews are on top. The
 full file is available <a href="https://docs.google.com/
@@ -907,7 +908,7 @@ about 3.8.</p>
 </span><span id="L-183"><a href="#L-183"><span class="linenos">183</span></a><span class="sd">Imagine a box of 320 thumbtacks. We flick each thumbtack 9 times. If it</span>
 </span><span id="L-184"><a href="#L-184"><span class="linenos">184</span></a><span class="sd">lands point up, we call it a success. Point down is a failure. Because</span>
 </span><span id="L-185"><a href="#L-185"><span class="linenos">185</span></a><span class="sd">of the imperfections, each thumbtack has its own probability of success.</span>
-</span><span id="L-186"><a href="#L-186"><span class="linenos">186</span></a><span class="sd">The file, `tacks.json`, lists the number of successes in 9 flicks for</span>
+</span><span id="L-186"><a href="#L-186"><span class="linenos">186</span></a><span class="sd">The file, `tackexpl.json`, lists the number of successes in 9 flicks for</span>
 </span><span id="L-187"><a href="#L-187"><span class="linenos">187</span></a><span class="sd">all 320 thumbtacks. They are:</span>
 </span><span id="L-188"><a href="#L-188"><span class="linenos">188</span></a>
 </span><span id="L-189"><a href="#L-189"><span class="linenos">189</span></a><span class="sd">&gt;   7, 4, 6, 6, 6, 6, 8, 6, 5, 8, 6, 3, 3, 7, 8, 4, 5, 5, 7, 8, 5, 7, 6,</span>
@@ -1003,7 +1004,7 @@ about 3.8.</p>
 </span><span id="L-279"><a href="#L-279"><span class="linenos">279</span></a><span class="sd">Each individual rating must be a whole number of stars between 1 and 5,</span>
 </span><span id="L-280"><a href="#L-280"><span class="linenos">280</span></a><span class="sd">inclusive. Hence, each action has 5 possible outcomes.</span>
 </span><span id="L-281"><a href="#L-281"><span class="linenos">281</span></a>
-</span><span id="L-282"><a href="#L-282"><span class="linenos">282</span></a><span class="sd">The file, `reviews.csv`, contains all the data for this example. This</span>
+</span><span id="L-282"><a href="#L-282"><span class="linenos">282</span></a><span class="sd">The file, `revexpl.csv`, contains all the data for this example. This</span>
 </span><span id="L-283"><a href="#L-283"><span class="linenos">283</span></a><span class="sd">file has 51 rows (one header row and one row for each product). The rows</span>
 </span><span id="L-284"><a href="#L-284"><span class="linenos">284</span></a><span class="sd">are ordered so that the products with the most reviews are on top. The</span>
 </span><span id="L-285"><a href="#L-285"><span class="linenos">285</span></a><span class="sd">full file is available [on Google Sheets](https://docs.google.com/</span>
@@ -1172,9 +1173,9 @@ about 3.8.</p>
 </span><span id="L-448"><a href="#L-448"><span class="linenos">448</span></a>
 </span><span id="L-449"><a href="#L-449"><span class="linenos">449</span></a><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
 </span><span id="L-450"><a href="#L-450"><span class="linenos">450</span></a><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-</span><span id="L-451"><a href="#L-451"><span class="linenos">451</span></a><span class="kn">from</span> <span class="nn">idp</span> <span class="kn">import</span> <span class="n">tools</span>
+</span><span id="L-451"><a href="#L-451"><span class="linenos">451</span></a><span class="kn">from</span> <span class="nn">idp</span> <span class="kn">import</span> <span class="n">tools</span><span class="p">,</span> <span class="n">gamedata</span>
 </span><span id="L-452"><a href="#L-452"><span class="linenos">452</span></a>
-</span><span id="L-453"><a href="#L-453"><span class="linenos">453</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;tools&#39;</span><span class="p">,</span> <span class="s1">&#39;idpModel&#39;</span><span class="p">]</span>
+</span><span id="L-453"><a href="#L-453"><span class="linenos">453</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;tools&#39;</span><span class="p">,</span> <span class="s1">&#39;gamedata&#39;</span><span class="p">,</span> <span class="s1">&#39;idpModel&#39;</span><span class="p">]</span>
 </span><span id="L-454"><a href="#L-454"><span class="linenos">454</span></a>
 </span><span id="L-455"><a href="#L-455"><span class="linenos">455</span></a><span class="k">def</span> <span class="nf">idpModel</span><span class="p">(</span><span class="n">colConc</span><span class="p">,</span> <span class="n">rowConc</span><span class="p">,</span> <span class="n">baseMeas</span><span class="p">,</span> <span class="n">rowCounts</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 </span><span id="L-456"><a href="#L-456"><span class="linenos">456</span></a>    <span class="sa">r</span><span class="sd">&#39;&#39;&#39;Creates an IDP model in which the agents have $L$ possible</span>
