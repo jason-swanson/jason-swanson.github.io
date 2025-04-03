@@ -733,12 +733,12 @@
 </span><span id="L-551"><a href="#L-551"><span class="linenos">551</span></a><span class="sd">            above description.</span>
 </span><span id="L-552"><a href="#L-552"><span class="linenos">552</span></a><span class="sd">        * **bandwidth** (`float` or `None`): The bandwidth to use in the</span>
 </span><span id="L-553"><a href="#L-553"><span class="linenos">553</span></a><span class="sd">            Gaussian KDE. If `None`, the bandwidth will be calculated</span>
-</span><span id="L-554"><a href="#L-554"><span class="linenos">554</span></a><span class="sd">            using [Scott&#39;s Rule](https://en.wikipedia.org/wiki/</span>
-</span><span id="L-555"><a href="#L-555"><span class="linenos">555</span></a><span class="sd">            Scott%27s_rule). The calculated value can be retrieved by</span>
-</span><span id="L-556"><a href="#L-556"><span class="linenos">556</span></a><span class="sd">            accessing the `Measure.bandwidth` property of the returned</span>
-</span><span id="L-557"><a href="#L-557"><span class="linenos">557</span></a><span class="sd">            object. This argument is passed directly to the</span>
-</span><span id="L-558"><a href="#L-558"><span class="linenos">558</span></a><span class="sd">            `gaussian_kde` function in the `scipy.stats` module. See</span>
-</span><span id="L-559"><a href="#L-559"><span class="linenos">559</span></a><span class="sd">            that documentation for further details.</span>
+</span><span id="L-554"><a href="#L-554"><span class="linenos">554</span></a><span class="sd">            using [Scott&#39;s Rule](https://doi.org/10.1002/9780470316849).</span>
+</span><span id="L-555"><a href="#L-555"><span class="linenos">555</span></a><span class="sd">            The calculated value can be retrieved by accessing the</span>
+</span><span id="L-556"><a href="#L-556"><span class="linenos">556</span></a><span class="sd">            `Measure.bandwidth` property of the returned object. This</span>
+</span><span id="L-557"><a href="#L-557"><span class="linenos">557</span></a><span class="sd">            argument is passed directly to the `gaussian_kde` function</span>
+</span><span id="L-558"><a href="#L-558"><span class="linenos">558</span></a><span class="sd">            in the `scipy.stats` module. See that documentation for</span>
+</span><span id="L-559"><a href="#L-559"><span class="linenos">559</span></a><span class="sd">            further details.</span>
 </span><span id="L-560"><a href="#L-560"><span class="linenos">560</span></a>
 </span><span id="L-561"><a href="#L-561"><span class="linenos">561</span></a><span class="sd">        **Returns:**</span>
 </span><span id="L-562"><a href="#L-562"><span class="linenos">562</span></a>
@@ -1712,12 +1712,12 @@ is the bandwidth that was used to create it. Is 0 otherwise. See
 </span><span id="IDPModel-552"><a href="#IDPModel-552"><span class="linenos">552</span></a><span class="sd">            above description.</span>
 </span><span id="IDPModel-553"><a href="#IDPModel-553"><span class="linenos">553</span></a><span class="sd">        * **bandwidth** (`float` or `None`): The bandwidth to use in the</span>
 </span><span id="IDPModel-554"><a href="#IDPModel-554"><span class="linenos">554</span></a><span class="sd">            Gaussian KDE. If `None`, the bandwidth will be calculated</span>
-</span><span id="IDPModel-555"><a href="#IDPModel-555"><span class="linenos">555</span></a><span class="sd">            using [Scott&#39;s Rule](https://en.wikipedia.org/wiki/</span>
-</span><span id="IDPModel-556"><a href="#IDPModel-556"><span class="linenos">556</span></a><span class="sd">            Scott%27s_rule). The calculated value can be retrieved by</span>
-</span><span id="IDPModel-557"><a href="#IDPModel-557"><span class="linenos">557</span></a><span class="sd">            accessing the `Measure.bandwidth` property of the returned</span>
-</span><span id="IDPModel-558"><a href="#IDPModel-558"><span class="linenos">558</span></a><span class="sd">            object. This argument is passed directly to the</span>
-</span><span id="IDPModel-559"><a href="#IDPModel-559"><span class="linenos">559</span></a><span class="sd">            `gaussian_kde` function in the `scipy.stats` module. See</span>
-</span><span id="IDPModel-560"><a href="#IDPModel-560"><span class="linenos">560</span></a><span class="sd">            that documentation for further details.</span>
+</span><span id="IDPModel-555"><a href="#IDPModel-555"><span class="linenos">555</span></a><span class="sd">            using [Scott&#39;s Rule](https://doi.org/10.1002/9780470316849).</span>
+</span><span id="IDPModel-556"><a href="#IDPModel-556"><span class="linenos">556</span></a><span class="sd">            The calculated value can be retrieved by accessing the</span>
+</span><span id="IDPModel-557"><a href="#IDPModel-557"><span class="linenos">557</span></a><span class="sd">            `Measure.bandwidth` property of the returned object. This</span>
+</span><span id="IDPModel-558"><a href="#IDPModel-558"><span class="linenos">558</span></a><span class="sd">            argument is passed directly to the `gaussian_kde` function</span>
+</span><span id="IDPModel-559"><a href="#IDPModel-559"><span class="linenos">559</span></a><span class="sd">            in the `scipy.stats` module. See that documentation for</span>
+</span><span id="IDPModel-560"><a href="#IDPModel-560"><span class="linenos">560</span></a><span class="sd">            further details.</span>
 </span><span id="IDPModel-561"><a href="#IDPModel-561"><span class="linenos">561</span></a>
 </span><span id="IDPModel-562"><a href="#IDPModel-562"><span class="linenos">562</span></a><span class="sd">        **Returns:**</span>
 </span><span id="IDPModel-563"><a href="#IDPModel-563"><span class="linenos">563</span></a>
@@ -2513,12 +2513,12 @@ estimating the cdf and pdf.</li>
 </span><span id="IDPModel.law-552"><a href="#IDPModel.law-552"><span class="linenos">552</span></a><span class="sd">            above description.</span>
 </span><span id="IDPModel.law-553"><a href="#IDPModel.law-553"><span class="linenos">553</span></a><span class="sd">        * **bandwidth** (`float` or `None`): The bandwidth to use in the</span>
 </span><span id="IDPModel.law-554"><a href="#IDPModel.law-554"><span class="linenos">554</span></a><span class="sd">            Gaussian KDE. If `None`, the bandwidth will be calculated</span>
-</span><span id="IDPModel.law-555"><a href="#IDPModel.law-555"><span class="linenos">555</span></a><span class="sd">            using [Scott&#39;s Rule](https://en.wikipedia.org/wiki/</span>
-</span><span id="IDPModel.law-556"><a href="#IDPModel.law-556"><span class="linenos">556</span></a><span class="sd">            Scott%27s_rule). The calculated value can be retrieved by</span>
-</span><span id="IDPModel.law-557"><a href="#IDPModel.law-557"><span class="linenos">557</span></a><span class="sd">            accessing the `Measure.bandwidth` property of the returned</span>
-</span><span id="IDPModel.law-558"><a href="#IDPModel.law-558"><span class="linenos">558</span></a><span class="sd">            object. This argument is passed directly to the</span>
-</span><span id="IDPModel.law-559"><a href="#IDPModel.law-559"><span class="linenos">559</span></a><span class="sd">            `gaussian_kde` function in the `scipy.stats` module. See</span>
-</span><span id="IDPModel.law-560"><a href="#IDPModel.law-560"><span class="linenos">560</span></a><span class="sd">            that documentation for further details.</span>
+</span><span id="IDPModel.law-555"><a href="#IDPModel.law-555"><span class="linenos">555</span></a><span class="sd">            using [Scott&#39;s Rule](https://doi.org/10.1002/9780470316849).</span>
+</span><span id="IDPModel.law-556"><a href="#IDPModel.law-556"><span class="linenos">556</span></a><span class="sd">            The calculated value can be retrieved by accessing the</span>
+</span><span id="IDPModel.law-557"><a href="#IDPModel.law-557"><span class="linenos">557</span></a><span class="sd">            `Measure.bandwidth` property of the returned object. This</span>
+</span><span id="IDPModel.law-558"><a href="#IDPModel.law-558"><span class="linenos">558</span></a><span class="sd">            argument is passed directly to the `gaussian_kde` function</span>
+</span><span id="IDPModel.law-559"><a href="#IDPModel.law-559"><span class="linenos">559</span></a><span class="sd">            in the `scipy.stats` module. See that documentation for</span>
+</span><span id="IDPModel.law-560"><a href="#IDPModel.law-560"><span class="linenos">560</span></a><span class="sd">            further details.</span>
 </span><span id="IDPModel.law-561"><a href="#IDPModel.law-561"><span class="linenos">561</span></a>
 </span><span id="IDPModel.law-562"><a href="#IDPModel.law-562"><span class="linenos">562</span></a><span class="sd">        **Returns:**</span>
 </span><span id="IDPModel.law-563"><a href="#IDPModel.law-563"><span class="linenos">563</span></a>
@@ -2621,12 +2621,12 @@ should have the same shape as <code><a href="#IDPModel.rowCounts">rowCounts</a><
 above description.</li>
 <li><strong>bandwidth</strong> (<code>float</code> or <code>None</code>): The bandwidth to use in the
 Gaussian KDE. If <code>None</code>, the bandwidth will be calculated
-using <a href="https://en.wikipedia.org/wiki/
-Scott%27s_rule">Scott's Rule</a>. The calculated value can be retrieved by
-accessing the <code><a href="#Measure.bandwidth">Measure.bandwidth</a></code> property of the returned
-object. This argument is passed directly to the
-<code>gaussian_kde</code> function in the <code>scipy.stats</code> module. See
-that documentation for further details.</li>
+using <a href="https://doi.org/10.1002/9780470316849">Scott's Rule</a>.
+The calculated value can be retrieved by accessing the
+<code><a href="#Measure.bandwidth">Measure.bandwidth</a></code> property of the returned object. This
+argument is passed directly to the <code>gaussian_kde</code> function
+in the <code>scipy.stats</code> module. See that documentation for
+further details.</li>
 </ul>
 
 <p><strong>Returns:</strong></p>
