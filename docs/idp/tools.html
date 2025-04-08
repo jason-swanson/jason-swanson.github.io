@@ -104,7 +104,7 @@
                                 <a class="variable" href="#IDPModel.likelihoods">likelihoods</a>
                         </li>
                         <li>
-                                <a class="variable" href="#IDPModel.scale">scale</a>
+                                <a class="variable" href="#IDPModel.logScale">logScale</a>
                         </li>
                         <li>
                                 <a class="variable" href="#IDPModel.weightedSims">weightedSims</a>
@@ -438,7 +438,7 @@
 </span><span id="L-256"><a href="#L-256"><span class="linenos">256</span></a>            <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">rowCounts</span>
 </span><span id="L-257"><a href="#L-257"><span class="linenos">257</span></a>        <span class="p">]</span>
 </span><span id="L-258"><a href="#L-258"><span class="linenos">258</span></a>
-</span><span id="L-259"><a href="#L-259"><span class="linenos">259</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">_scale</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span id="L-259"><a href="#L-259"><span class="linenos">259</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">_logScale</span> <span class="o">=</span> <span class="mi">0</span>
 </span><span id="L-260"><a href="#L-260"><span class="linenos">260</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">_weightedSims</span> <span class="o">=</span> <span class="p">[]</span>
 </span><span id="L-261"><a href="#L-261"><span class="linenos">261</span></a>
 </span><span id="L-262"><a href="#L-262"><span class="linenos">262</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">_savedSims</span> <span class="o">=</span> <span class="p">[]</span>
@@ -493,16 +493,16 @@
 </span><span id="L-311"><a href="#L-311"><span class="linenos">311</span></a>        <span class="k">return</span> <span class="nb">tuple</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_likelihoods</span><span class="p">)</span>
 </span><span id="L-312"><a href="#L-312"><span class="linenos">312</span></a>
 </span><span id="L-313"><a href="#L-313"><span class="linenos">313</span></a>    <span class="nd">@property</span>
-</span><span id="L-314"><a href="#L-314"><span class="linenos">314</span></a>    <span class="k">def</span> <span class="nf">scale</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-</span><span id="L-315"><a href="#L-315"><span class="linenos">315</span></a>        <span class="sa">r</span><span class="sd">&#39;&#39;&#39;`float`: The scale factor to use for weighted simulations.</span>
-</span><span id="L-316"><a href="#L-316"><span class="linenos">316</span></a><span class="sd">        Denoted by $\log c$ in Section 9 of the Paper. Defaults to 0.</span>
-</span><span id="L-317"><a href="#L-317"><span class="linenos">317</span></a><span class="sd">        Altering this value runs the `clearSims` method.</span>
+</span><span id="L-314"><a href="#L-314"><span class="linenos">314</span></a>    <span class="k">def</span> <span class="nf">logScale</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span id="L-315"><a href="#L-315"><span class="linenos">315</span></a>        <span class="sa">r</span><span class="sd">&#39;&#39;&#39;`float`: The log scale factor to use for weighted</span>
+</span><span id="L-316"><a href="#L-316"><span class="linenos">316</span></a><span class="sd">        simulations. Denoted by $\log c$ in Section 9 of the Paper.</span>
+</span><span id="L-317"><a href="#L-317"><span class="linenos">317</span></a><span class="sd">        Defaults to 0. Altering this value runs the `clearSims` method.</span>
 </span><span id="L-318"><a href="#L-318"><span class="linenos">318</span></a><span class="sd">        &#39;&#39;&#39;</span>
-</span><span id="L-319"><a href="#L-319"><span class="linenos">319</span></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_scale</span>
+</span><span id="L-319"><a href="#L-319"><span class="linenos">319</span></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_logScale</span>
 </span><span id="L-320"><a href="#L-320"><span class="linenos">320</span></a>
-</span><span id="L-321"><a href="#L-321"><span class="linenos">321</span></a>    <span class="nd">@scale</span><span class="o">.</span><span class="n">setter</span>
-</span><span id="L-322"><a href="#L-322"><span class="linenos">322</span></a>    <span class="k">def</span> <span class="nf">scale</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
-</span><span id="L-323"><a href="#L-323"><span class="linenos">323</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">_scale</span> <span class="o">=</span> <span class="n">value</span>
+</span><span id="L-321"><a href="#L-321"><span class="linenos">321</span></a>    <span class="nd">@logScale</span><span class="o">.</span><span class="n">setter</span>
+</span><span id="L-322"><a href="#L-322"><span class="linenos">322</span></a>    <span class="k">def</span> <span class="nf">logScale</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+</span><span id="L-323"><a href="#L-323"><span class="linenos">323</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">_logScale</span> <span class="o">=</span> <span class="n">value</span>
 </span><span id="L-324"><a href="#L-324"><span class="linenos">324</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">clearSims</span><span class="p">()</span>
 </span><span id="L-325"><a href="#L-325"><span class="linenos">325</span></a>
 </span><span id="L-326"><a href="#L-326"><span class="linenos">326</span></a>    <span class="nd">@property</span>
@@ -923,7 +923,7 @@
 </span><span id="L-741"><a href="#L-741"><span class="linenos">741</span></a>            <span class="c1"># previous value of `totalWeight` by the (m + 1)-th factor</span>
 </span><span id="L-742"><a href="#L-742"><span class="linenos">742</span></a>            <span class="c1"># in the definition of $V$ in Section 9 of the Paper.</span>
 </span><span id="L-743"><a href="#L-743"><span class="linenos">743</span></a>            <span class="bp">self</span><span class="o">.</span><span class="n">_logWeight</span> <span class="o">+=</span> <span class="p">(</span>
-</span><span id="L-744"><a href="#L-744"><span class="linenos">744</span></a>                <span class="n">idpModel</span><span class="o">.</span><span class="n">scale</span> <span class="o">+</span>
+</span><span id="L-744"><a href="#L-744"><span class="linenos">744</span></a>                <span class="n">idpModel</span><span class="o">.</span><span class="n">logScale</span> <span class="o">+</span>
 </span><span id="L-745"><a href="#L-745"><span class="linenos">745</span></a>                <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">m</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">-</span>
 </span><span id="L-746"><a href="#L-746"><span class="linenos">746</span></a>                <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">idpModel</span><span class="o">.</span><span class="n">colConc</span> <span class="o">+</span> <span class="n">m</span><span class="p">)</span> <span class="o">+</span>
 </span><span id="L-747"><a href="#L-747"><span class="linenos">747</span></a>                <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_rowWeights</span><span class="p">[</span><span class="n">m</span><span class="p">]))</span>
@@ -934,7 +934,7 @@
 </span><span id="L-752"><a href="#L-752"><span class="linenos">752</span></a>            <span class="n">adj</span> <span class="o">=</span> <span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">_logWeight</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">idpModel</span><span class="o">.</span><span class="n">rowCounts</span><span class="p">)</span>
 </span><span id="L-753"><a href="#L-753"><span class="linenos">753</span></a>            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
 </span><span id="L-754"><a href="#L-754"><span class="linenos">754</span></a>                <span class="s1">&#39;Simulation weight out of bounds.</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">+</span>
-</span><span id="L-755"><a href="#L-755"><span class="linenos">755</span></a>                <span class="sa">f</span><span class="s1">&#39;Try adjusting scale factor by </span><span class="si">{</span><span class="n">adj</span><span class="si">}</span><span class="s1">&#39;</span>
+</span><span id="L-755"><a href="#L-755"><span class="linenos">755</span></a>                <span class="sa">f</span><span class="s1">&#39;Try adjusting log scale factor by </span><span class="si">{</span><span class="n">adj</span><span class="si">}</span><span class="s1">&#39;</span>
 </span><span id="L-756"><a href="#L-756"><span class="linenos">756</span></a>            <span class="p">)</span>
 </span><span id="L-757"><a href="#L-757"><span class="linenos">757</span></a>
 </span><span id="L-758"><a href="#L-758"><span class="linenos">758</span></a>    <span class="nd">@property</span>
@@ -1417,7 +1417,7 @@ is the bandwidth that was used to create it. Is 0 otherwise. See
 </span><span id="IDPModel-257"><a href="#IDPModel-257"><span class="linenos">257</span></a>            <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">rowCounts</span>
 </span><span id="IDPModel-258"><a href="#IDPModel-258"><span class="linenos">258</span></a>        <span class="p">]</span>
 </span><span id="IDPModel-259"><a href="#IDPModel-259"><span class="linenos">259</span></a>
-</span><span id="IDPModel-260"><a href="#IDPModel-260"><span class="linenos">260</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">_scale</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span id="IDPModel-260"><a href="#IDPModel-260"><span class="linenos">260</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">_logScale</span> <span class="o">=</span> <span class="mi">0</span>
 </span><span id="IDPModel-261"><a href="#IDPModel-261"><span class="linenos">261</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">_weightedSims</span> <span class="o">=</span> <span class="p">[]</span>
 </span><span id="IDPModel-262"><a href="#IDPModel-262"><span class="linenos">262</span></a>
 </span><span id="IDPModel-263"><a href="#IDPModel-263"><span class="linenos">263</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">_savedSims</span> <span class="o">=</span> <span class="p">[]</span>
@@ -1472,16 +1472,16 @@ is the bandwidth that was used to create it. Is 0 otherwise. See
 </span><span id="IDPModel-312"><a href="#IDPModel-312"><span class="linenos">312</span></a>        <span class="k">return</span> <span class="nb">tuple</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_likelihoods</span><span class="p">)</span>
 </span><span id="IDPModel-313"><a href="#IDPModel-313"><span class="linenos">313</span></a>
 </span><span id="IDPModel-314"><a href="#IDPModel-314"><span class="linenos">314</span></a>    <span class="nd">@property</span>
-</span><span id="IDPModel-315"><a href="#IDPModel-315"><span class="linenos">315</span></a>    <span class="k">def</span> <span class="nf">scale</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-</span><span id="IDPModel-316"><a href="#IDPModel-316"><span class="linenos">316</span></a>        <span class="sa">r</span><span class="sd">&#39;&#39;&#39;`float`: The scale factor to use for weighted simulations.</span>
-</span><span id="IDPModel-317"><a href="#IDPModel-317"><span class="linenos">317</span></a><span class="sd">        Denoted by $\log c$ in Section 9 of the Paper. Defaults to 0.</span>
-</span><span id="IDPModel-318"><a href="#IDPModel-318"><span class="linenos">318</span></a><span class="sd">        Altering this value runs the `clearSims` method.</span>
+</span><span id="IDPModel-315"><a href="#IDPModel-315"><span class="linenos">315</span></a>    <span class="k">def</span> <span class="nf">logScale</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span id="IDPModel-316"><a href="#IDPModel-316"><span class="linenos">316</span></a>        <span class="sa">r</span><span class="sd">&#39;&#39;&#39;`float`: The log scale factor to use for weighted</span>
+</span><span id="IDPModel-317"><a href="#IDPModel-317"><span class="linenos">317</span></a><span class="sd">        simulations. Denoted by $\log c$ in Section 9 of the Paper.</span>
+</span><span id="IDPModel-318"><a href="#IDPModel-318"><span class="linenos">318</span></a><span class="sd">        Defaults to 0. Altering this value runs the `clearSims` method.</span>
 </span><span id="IDPModel-319"><a href="#IDPModel-319"><span class="linenos">319</span></a><span class="sd">        &#39;&#39;&#39;</span>
-</span><span id="IDPModel-320"><a href="#IDPModel-320"><span class="linenos">320</span></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_scale</span>
+</span><span id="IDPModel-320"><a href="#IDPModel-320"><span class="linenos">320</span></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_logScale</span>
 </span><span id="IDPModel-321"><a href="#IDPModel-321"><span class="linenos">321</span></a>
-</span><span id="IDPModel-322"><a href="#IDPModel-322"><span class="linenos">322</span></a>    <span class="nd">@scale</span><span class="o">.</span><span class="n">setter</span>
-</span><span id="IDPModel-323"><a href="#IDPModel-323"><span class="linenos">323</span></a>    <span class="k">def</span> <span class="nf">scale</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
-</span><span id="IDPModel-324"><a href="#IDPModel-324"><span class="linenos">324</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">_scale</span> <span class="o">=</span> <span class="n">value</span>
+</span><span id="IDPModel-322"><a href="#IDPModel-322"><span class="linenos">322</span></a>    <span class="nd">@logScale</span><span class="o">.</span><span class="n">setter</span>
+</span><span id="IDPModel-323"><a href="#IDPModel-323"><span class="linenos">323</span></a>    <span class="k">def</span> <span class="nf">logScale</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+</span><span id="IDPModel-324"><a href="#IDPModel-324"><span class="linenos">324</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">_logScale</span> <span class="o">=</span> <span class="n">value</span>
 </span><span id="IDPModel-325"><a href="#IDPModel-325"><span class="linenos">325</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">clearSims</span><span class="p">()</span>
 </span><span id="IDPModel-326"><a href="#IDPModel-326"><span class="linenos">326</span></a>
 </span><span id="IDPModel-327"><a href="#IDPModel-327"><span class="linenos">327</span></a>    <span class="nd">@property</span>
@@ -1862,7 +1862,7 @@ appears in the Paper is taken here to be the identity.</p>
 </span><span id="IDPModel.__init__-257"><a href="#IDPModel.__init__-257"><span class="linenos">257</span></a>            <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">rowCounts</span>
 </span><span id="IDPModel.__init__-258"><a href="#IDPModel.__init__-258"><span class="linenos">258</span></a>        <span class="p">]</span>
 </span><span id="IDPModel.__init__-259"><a href="#IDPModel.__init__-259"><span class="linenos">259</span></a>
-</span><span id="IDPModel.__init__-260"><a href="#IDPModel.__init__-260"><span class="linenos">260</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">_scale</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span id="IDPModel.__init__-260"><a href="#IDPModel.__init__-260"><span class="linenos">260</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">_logScale</span> <span class="o">=</span> <span class="mi">0</span>
 </span><span id="IDPModel.__init__-261"><a href="#IDPModel.__init__-261"><span class="linenos">261</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">_weightedSims</span> <span class="o">=</span> <span class="p">[]</span>
 </span><span id="IDPModel.__init__-262"><a href="#IDPModel.__init__-262"><span class="linenos">262</span></a>
 </span><span id="IDPModel.__init__-263"><a href="#IDPModel.__init__-263"><span class="linenos">263</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">_savedSims</span> <span class="o">=</span> <span class="p">[]</span>
@@ -2017,28 +2017,28 @@ probability of seeing the row counts for the given row.</p>
 
 
                             </div>
-                            <div id="IDPModel.scale" class="classattr">
-                                        <input id="IDPModel.scale-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
+                            <div id="IDPModel.logScale" class="classattr">
+                                        <input id="IDPModel.logScale-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
 <div class="attr variable">
-            <span class="name">scale</span>
+            <span class="name">logScale</span>
 
-                <label class="view-source-button" for="IDPModel.scale-view-source"><span>View Source</span></label>
+                <label class="view-source-button" for="IDPModel.logScale-view-source"><span>View Source</span></label>
 
     </div>
-    <a class="headerlink" href="#IDPModel.scale"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="IDPModel.scale-314"><a href="#IDPModel.scale-314"><span class="linenos">314</span></a>    <span class="nd">@property</span>
-</span><span id="IDPModel.scale-315"><a href="#IDPModel.scale-315"><span class="linenos">315</span></a>    <span class="k">def</span> <span class="nf">scale</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-</span><span id="IDPModel.scale-316"><a href="#IDPModel.scale-316"><span class="linenos">316</span></a>        <span class="sa">r</span><span class="sd">&#39;&#39;&#39;`float`: The scale factor to use for weighted simulations.</span>
-</span><span id="IDPModel.scale-317"><a href="#IDPModel.scale-317"><span class="linenos">317</span></a><span class="sd">        Denoted by $\log c$ in Section 9 of the Paper. Defaults to 0.</span>
-</span><span id="IDPModel.scale-318"><a href="#IDPModel.scale-318"><span class="linenos">318</span></a><span class="sd">        Altering this value runs the `clearSims` method.</span>
-</span><span id="IDPModel.scale-319"><a href="#IDPModel.scale-319"><span class="linenos">319</span></a><span class="sd">        &#39;&#39;&#39;</span>
-</span><span id="IDPModel.scale-320"><a href="#IDPModel.scale-320"><span class="linenos">320</span></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_scale</span>
+    <a class="headerlink" href="#IDPModel.logScale"></a>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="IDPModel.logScale-314"><a href="#IDPModel.logScale-314"><span class="linenos">314</span></a>    <span class="nd">@property</span>
+</span><span id="IDPModel.logScale-315"><a href="#IDPModel.logScale-315"><span class="linenos">315</span></a>    <span class="k">def</span> <span class="nf">logScale</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span id="IDPModel.logScale-316"><a href="#IDPModel.logScale-316"><span class="linenos">316</span></a>        <span class="sa">r</span><span class="sd">&#39;&#39;&#39;`float`: The log scale factor to use for weighted</span>
+</span><span id="IDPModel.logScale-317"><a href="#IDPModel.logScale-317"><span class="linenos">317</span></a><span class="sd">        simulations. Denoted by $\log c$ in Section 9 of the Paper.</span>
+</span><span id="IDPModel.logScale-318"><a href="#IDPModel.logScale-318"><span class="linenos">318</span></a><span class="sd">        Defaults to 0. Altering this value runs the `clearSims` method.</span>
+</span><span id="IDPModel.logScale-319"><a href="#IDPModel.logScale-319"><span class="linenos">319</span></a><span class="sd">        &#39;&#39;&#39;</span>
+</span><span id="IDPModel.logScale-320"><a href="#IDPModel.logScale-320"><span class="linenos">320</span></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_logScale</span>
 </span></pre></div>
 
 
-            <div class="docstring"><p><code>float</code>: The scale factor to use for weighted simulations.
-Denoted by $\log c$ in Section 9 of the Paper. Defaults to 0.
-Altering this value runs the <code><a href="#IDPModel.clearSims">clearSims</a></code> method.</p>
+            <div class="docstring"><p><code>float</code>: The log scale factor to use for weighted
+simulations. Denoted by $\log c$ in Section 9 of the Paper.
+Defaults to 0. Altering this value runs the <code><a href="#IDPModel.clearSims">clearSims</a></code> method.</p>
 </div>
 
 
@@ -2820,7 +2820,7 @@ See that documentation for further details.</li>
 </span><span id="WeightedSim-742"><a href="#WeightedSim-742"><span class="linenos">742</span></a>            <span class="c1"># previous value of `totalWeight` by the (m + 1)-th factor</span>
 </span><span id="WeightedSim-743"><a href="#WeightedSim-743"><span class="linenos">743</span></a>            <span class="c1"># in the definition of $V$ in Section 9 of the Paper.</span>
 </span><span id="WeightedSim-744"><a href="#WeightedSim-744"><span class="linenos">744</span></a>            <span class="bp">self</span><span class="o">.</span><span class="n">_logWeight</span> <span class="o">+=</span> <span class="p">(</span>
-</span><span id="WeightedSim-745"><a href="#WeightedSim-745"><span class="linenos">745</span></a>                <span class="n">idpModel</span><span class="o">.</span><span class="n">scale</span> <span class="o">+</span>
+</span><span id="WeightedSim-745"><a href="#WeightedSim-745"><span class="linenos">745</span></a>                <span class="n">idpModel</span><span class="o">.</span><span class="n">logScale</span> <span class="o">+</span>
 </span><span id="WeightedSim-746"><a href="#WeightedSim-746"><span class="linenos">746</span></a>                <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">m</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">-</span>
 </span><span id="WeightedSim-747"><a href="#WeightedSim-747"><span class="linenos">747</span></a>                <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">idpModel</span><span class="o">.</span><span class="n">colConc</span> <span class="o">+</span> <span class="n">m</span><span class="p">)</span> <span class="o">+</span>
 </span><span id="WeightedSim-748"><a href="#WeightedSim-748"><span class="linenos">748</span></a>                <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_rowWeights</span><span class="p">[</span><span class="n">m</span><span class="p">]))</span>
@@ -2831,7 +2831,7 @@ See that documentation for further details.</li>
 </span><span id="WeightedSim-753"><a href="#WeightedSim-753"><span class="linenos">753</span></a>            <span class="n">adj</span> <span class="o">=</span> <span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">_logWeight</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">idpModel</span><span class="o">.</span><span class="n">rowCounts</span><span class="p">)</span>
 </span><span id="WeightedSim-754"><a href="#WeightedSim-754"><span class="linenos">754</span></a>            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
 </span><span id="WeightedSim-755"><a href="#WeightedSim-755"><span class="linenos">755</span></a>                <span class="s1">&#39;Simulation weight out of bounds.</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">+</span>
-</span><span id="WeightedSim-756"><a href="#WeightedSim-756"><span class="linenos">756</span></a>                <span class="sa">f</span><span class="s1">&#39;Try adjusting scale factor by </span><span class="si">{</span><span class="n">adj</span><span class="si">}</span><span class="s1">&#39;</span>
+</span><span id="WeightedSim-756"><a href="#WeightedSim-756"><span class="linenos">756</span></a>                <span class="sa">f</span><span class="s1">&#39;Try adjusting log scale factor by </span><span class="si">{</span><span class="n">adj</span><span class="si">}</span><span class="s1">&#39;</span>
 </span><span id="WeightedSim-757"><a href="#WeightedSim-757"><span class="linenos">757</span></a>            <span class="p">)</span>
 </span><span id="WeightedSim-758"><a href="#WeightedSim-758"><span class="linenos">758</span></a>
 </span><span id="WeightedSim-759"><a href="#WeightedSim-759"><span class="linenos">759</span></a>    <span class="nd">@property</span>
@@ -2950,7 +2950,7 @@ See that documentation for further details.</li>
 </span><span id="WeightedSim.__init__-742"><a href="#WeightedSim.__init__-742"><span class="linenos">742</span></a>            <span class="c1"># previous value of `totalWeight` by the (m + 1)-th factor</span>
 </span><span id="WeightedSim.__init__-743"><a href="#WeightedSim.__init__-743"><span class="linenos">743</span></a>            <span class="c1"># in the definition of $V$ in Section 9 of the Paper.</span>
 </span><span id="WeightedSim.__init__-744"><a href="#WeightedSim.__init__-744"><span class="linenos">744</span></a>            <span class="bp">self</span><span class="o">.</span><span class="n">_logWeight</span> <span class="o">+=</span> <span class="p">(</span>
-</span><span id="WeightedSim.__init__-745"><a href="#WeightedSim.__init__-745"><span class="linenos">745</span></a>                <span class="n">idpModel</span><span class="o">.</span><span class="n">scale</span> <span class="o">+</span>
+</span><span id="WeightedSim.__init__-745"><a href="#WeightedSim.__init__-745"><span class="linenos">745</span></a>                <span class="n">idpModel</span><span class="o">.</span><span class="n">logScale</span> <span class="o">+</span>
 </span><span id="WeightedSim.__init__-746"><a href="#WeightedSim.__init__-746"><span class="linenos">746</span></a>                <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">m</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">-</span>
 </span><span id="WeightedSim.__init__-747"><a href="#WeightedSim.__init__-747"><span class="linenos">747</span></a>                <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">idpModel</span><span class="o">.</span><span class="n">colConc</span> <span class="o">+</span> <span class="n">m</span><span class="p">)</span> <span class="o">+</span>
 </span><span id="WeightedSim.__init__-748"><a href="#WeightedSim.__init__-748"><span class="linenos">748</span></a>                <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_rowWeights</span><span class="p">[</span><span class="n">m</span><span class="p">]))</span>
@@ -2961,7 +2961,7 @@ See that documentation for further details.</li>
 </span><span id="WeightedSim.__init__-753"><a href="#WeightedSim.__init__-753"><span class="linenos">753</span></a>            <span class="n">adj</span> <span class="o">=</span> <span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">_logWeight</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">idpModel</span><span class="o">.</span><span class="n">rowCounts</span><span class="p">)</span>
 </span><span id="WeightedSim.__init__-754"><a href="#WeightedSim.__init__-754"><span class="linenos">754</span></a>            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
 </span><span id="WeightedSim.__init__-755"><a href="#WeightedSim.__init__-755"><span class="linenos">755</span></a>                <span class="s1">&#39;Simulation weight out of bounds.</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">+</span>
-</span><span id="WeightedSim.__init__-756"><a href="#WeightedSim.__init__-756"><span class="linenos">756</span></a>                <span class="sa">f</span><span class="s1">&#39;Try adjusting scale factor by </span><span class="si">{</span><span class="n">adj</span><span class="si">}</span><span class="s1">&#39;</span>
+</span><span id="WeightedSim.__init__-756"><a href="#WeightedSim.__init__-756"><span class="linenos">756</span></a>                <span class="sa">f</span><span class="s1">&#39;Try adjusting log scale factor by </span><span class="si">{</span><span class="n">adj</span><span class="si">}</span><span class="s1">&#39;</span>
 </span><span id="WeightedSim.__init__-757"><a href="#WeightedSim.__init__-757"><span class="linenos">757</span></a>            <span class="p">)</span>
 </span></pre></div>
 

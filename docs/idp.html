@@ -590,17 +590,17 @@ weighted simulation, we get an error.</p>
   <span class="n">File</span> <span class="s2">&quot;idp.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">694</span><span class="p">,</span> <span class="ow">in</span> <span class="n">updateRowCounts</span>
     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
 <span class="ne">ValueError</span><span class="p">:</span> <span class="n">Simulation</span> <span class="n">weight</span> <span class="n">out</span> <span class="n">of</span> <span class="n">bounds</span><span class="o">.</span>
-<span class="n">Try</span> <span class="n">adjusting</span> <span class="n">scale</span> <span class="n">factor</span> <span class="n">by</span> <span class="mf">28.773115195642152</span>
+<span class="n">Try</span> <span class="n">adjusting</span> <span class="n">log</span> <span class="n">scale</span> <span class="n">factor</span> <span class="n">by</span> <span class="mf">28.773115195642152</span>
 </code></pre>
 </div>
 
 <p>The reason for this error is that the simulation weight was too small
 for the code to handle. The error message recommends that we correct for
-this by adjusting the scale factor. Following the recommendation, we are
-able to create simulations.</p>
+this by adjusting the log scale factor. Following the recommendation, we
+are able to create simulations.</p>
 
 <div class="pdoc-code codehilite">
-<pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">model</span><span class="o">.</span><span class="n">scale</span> <span class="o">+=</span> <span class="mf">28.8</span>
+<pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">model</span><span class="o">.</span><span class="n">logScale</span> <span class="o">+=</span> <span class="mf">28.8</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">model</span><span class="o">.</span><span class="n">addSims</span><span class="p">(</span><span class="mi">10000</span><span class="p">)</span> <span class="c1"># took ~17s</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">model</span><span class="o">.</span><span class="n">ess</span>
 <span class="mf">7.841271686848992</span>
@@ -612,7 +612,7 @@ about 8. To fix this, we can adjust the column concentration.</p>
 
 <div class="pdoc-code codehilite">
 <pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">model</span> <span class="o">=</span> <span class="n">idpModel</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="n">rowCounts</span><span class="p">)</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">model</span><span class="o">.</span><span class="n">scale</span> <span class="o">+=</span> <span class="mf">28.8</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">model</span><span class="o">.</span><span class="n">logScale</span> <span class="o">+=</span> <span class="mf">28.8</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">model</span><span class="o">.</span><span class="n">addSims</span><span class="p">(</span><span class="mi">10000</span><span class="p">)</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">model</span><span class="o">.</span><span class="n">ess</span>
 <span class="mf">43.80517839891516</span>
@@ -896,12 +896,12 @@ approximation that is supported on the integers between 0 and 499.</p>
 
 <p>Having built the base measure, we now build our IDP model, generate
 simulations, and check the effective sample size. As in the Amazon
-reviews example, we need to adjust the model's scale factor in order to
-build the model without error.</p>
+reviews example, we need to adjust the model's log scale factor in order
+to build the model without error.</p>
 
 <div class="pdoc-code codehilite">
 <pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">model</span> <span class="o">=</span> <span class="n">idpModel</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">baseMeas</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">model</span><span class="o">.</span><span class="n">scale</span> <span class="o">+=</span> <span class="mi">42</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">model</span><span class="o">.</span><span class="n">logScale</span> <span class="o">+=</span> <span class="mi">42</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">model</span><span class="o">.</span><span class="n">addSims</span><span class="p">(</span><span class="mi">40000</span><span class="p">)</span> <span class="c1"># took ~3m</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">model</span><span class="o">.</span><span class="n">ess</span>
 <span class="mf">326.717352110184</span>
@@ -1071,7 +1071,7 @@ The Matrix's 15 to a 14, and then rerunning the model.</p>
 <pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">data</span><span class="p">[</span><span class="mi">8</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">39</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">data</span><span class="p">[</span><span class="mi">7</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">14</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">model</span> <span class="o">=</span> <span class="n">idpModel</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">baseMeas</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">model</span><span class="o">.</span><span class="n">scale</span> <span class="o">+=</span> <span class="mi">42</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">model</span><span class="o">.</span><span class="n">logScale</span> <span class="o">+=</span> <span class="mi">42</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">model</span><span class="o">.</span><span class="n">addSims</span><span class="p">(</span><span class="mi">40000</span><span class="p">)</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">model</span><span class="o">.</span><span class="n">ess</span>
 <span class="mf">22.32478257656367</span>
@@ -1361,7 +1361,7 @@ score.</p>
 
 <div class="pdoc-code codehilite">
 <pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">model</span> <span class="o">=</span> <span class="n">idpModel</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">baseMeas</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">model</span><span class="o">.</span><span class="n">scale</span> <span class="o">+=</span> <span class="mi">42</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">model</span><span class="o">.</span><span class="n">logScale</span> <span class="o">+=</span> <span class="mi">42</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">model</span><span class="o">.</span><span class="n">addSims</span><span class="p">(</span><span class="mi">40000</span><span class="p">)</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">model</span><span class="o">.</span><span class="n">ess</span>
 <span class="mf">38.995295056814456</span>
